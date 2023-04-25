@@ -1,0 +1,52 @@
+html,body{
+    background-color: #f0f0f0;
+}
+.alert{
+    position: absolute;
+    z-index: 10;
+    width: 220px;
+    text-align: center;
+    display: none;
+}
+.my-container{
+    background-color: #ffffff;
+    width: 800px;
+    margin: 50px auto;
+    box-shadow: 5px 5px 20px #aaaaaa;
+    display: flex;
+    border-radius: 8px;
+}
+.reg,
+.login{
+    flex: 1;
+}
+.reg{
+    border-right: 3px double #cccccc;
+}
+.title{
+    height: 40px;
+    line-height: 40px;
+    text-indent: 12px;
+    border-bottom: 1px solid #cccccc;
+}
+.content{
+    padding: 10px;
+}
+label{
+    font-weight: normal;
+}
+.validateCode img{
+    float: left;
+    width: 150px;
+    height: 30px;
+}
+.validateCode input{
+    float: left;
+    width: 150px;
+    height: 30px;
+    outline:none;
+}
+.validateCode{
+    height: 30px;
+    line-height: 30px;
+}

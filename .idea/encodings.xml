@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" defaultCharsetForPropertiesFiles="GBK">
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/classes" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/lib" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/lib/mysql-connector-j-8.0.32.jar" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/admin" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/web/iframe" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/web/images" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/web/images/1.jpg" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/web/images/110.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/web/images/2.jpg" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/web/images/3.jpg" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/web/images/4.jpg" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/web/images/ait_dot.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/web/images/ait_dot2.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/web/images/background.jpg" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/web/images/bg_bannerBtm.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/web/images/bg_cline.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/web/images/bg_header.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/web/images/bg_hline.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/web/images/bg_lover.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/web/images/bg_nav2.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/web/images/css" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/web/images/exit.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/images/ico.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/web/images/icon_exit.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/images/icon_secret.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/images/ie6_bg_bannerBtm.jpg" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/web/images/ie6_bg_nav2.jpg" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/web/images/ie6_ico.gif" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/web/images/ie6_menu.jpg" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/web/images/ie6_sprite.jpg" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/web/images/ie6_sprite_text.jpg" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/web/images/img" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/web/images/img/daohang.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/images/img/exit.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/images/img/icon_bed.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/images/img/icon_exit.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/images/img/icon_fee.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/images/img/icon_old.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/images/img/icon_oldman.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/images/img/icon_personnel.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/images/img/icon_qj.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/images/img/icon_reception_management.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/images/img/icon_secret.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/images/img/icon_service_management.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/images/img/icon_sevice_management.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/images/img/icon_sg.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/images/img/icon_user.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/images/img/icon_warehouse_management.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/images/img/loge.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/images/img/look.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/images/img/look1.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/images/js" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/web/images/menu.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/web/images/pagination.gif" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/web/images/pagination.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/web/images/sprite.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/web/images/sprite_text.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/web/images/sy.jpg" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/web/images/wj.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/web/images/zgm.jpg" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/web/index.jsp" charset="UTF-8" />
+  </component>
+</project>

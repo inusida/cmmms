@@ -1,0 +1,18 @@
+@CHARSET "UTF-8";
+*{
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+	font-size: 14px;
+}
+a{
+	color: #000000;
+}
+a:hover{
+	text-decoration: none;
+	color: #2b669a;
+}
+span.glyphicon,
+i.glyphicon{
+	margin-right: 5px;
+}
