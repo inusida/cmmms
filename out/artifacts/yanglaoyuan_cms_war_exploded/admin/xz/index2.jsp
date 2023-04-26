@@ -145,14 +145,14 @@ String message = (String)request.getAttribute("message");
        </tr>
 <%   
 	cb.setEVERYPAGENUM(12);
-	int cou = cb.getMessageCount("select count(*) from xz where lr='"+username+"'");//得到信息总数			        
+	int cou = cb.getMessageCount("select count(*) from xz where hg='"+username+"'");//得到信息总数
 	String page1=request.getParameter("page");
 	if(page1==null){
 		page1="1";
 	}
 	session.setAttribute("busMessageCount", cou + "");
 	session.setAttribute("busPage", page1);
-	List pagelist1 = cb.getMessage(Integer.parseInt(page1),"select * from xz where lr='"+username+"' order by id desc",7);
+	List pagelist1 = cb.getMessage(Integer.parseInt(page1),"select * from xz where hg='"+username+"' order by id desc",7);
 	session.setAttribute("qqq", pagelist1);
 	int pageCount = cb.getPageCount(); //得到页数  
 	session.setAttribute("busPageCount", pageCount + ""); 

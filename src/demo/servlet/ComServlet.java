@@ -298,14 +298,14 @@ public class ComServlet extends HttpServlet {
 				request.getRequestDispatcher("admin/fy/index.jsp").forward(request, response);
 			}
 		}
-		else if(method.equals("addxz")){  //入住费用
-			String lr = request.getParameter("lr");
+		else if(method.equals("addxz")){  //薪资
+			String hg = request.getParameter("hg");
 			String fy = request.getParameter("fy");
 			String kc = request.getParameter("kc");
 			String zt = request.getParameter("zt");
 			String xx = request.getParameter("xx");
 			float sji= Float.parseFloat(fy)- Float.parseFloat(kc);
-			int flag = cBean.comUp("insert into xz(lr,fy,kc,zt,xx,sji) values('"+lr+"','"+fy+"','"+kc+"','"+zt+"','"+xx+"','"+sji+"' )");
+			int flag = cBean.comUp("insert into xz(hg,fy,kc,zt,xx,sji) values('"+hg+"','"+fy+"','"+kc+"','"+zt+"','"+xx+"','"+sji+"' )");
 			if(flag == Constant.SUCCESS){
 				request.setAttribute("message", "操作成功！");
 				request.getRequestDispatcher("admin/xz/index.jsp").forward(request, response);
@@ -315,15 +315,15 @@ public class ComServlet extends HttpServlet {
 				request.getRequestDispatcher("admin/xz/index.jsp").forward(request, response);
 			}
 		}
-		else if(method.equals("upxz")){ //修改入住费用
+		else if(method.equals("upxz")){
 			String id=request.getParameter("id");
-			String lr = request.getParameter("lr");
+			String hg = request.getParameter("hg");
 			String fy = request.getParameter("fy");
 			String kc = request.getParameter("kc");
 			String zt = request.getParameter("zt");
 			String xx = request.getParameter("xx");
 			float sji= Float.parseFloat(fy)- Float.parseFloat(kc);
-			int flag = cBean.comUp("update xz set lr='"+lr+"',fy='"+fy+"',kc='"+kc+"',zt='"+zt+"',xx='"+xx+"',sji='"+sji+"'  where id='"+id+"'");
+			int flag = cBean.comUp("update xz set hg='"+hg+"',fy='"+fy+"',kc='"+kc+"',zt='"+zt+"',xx='"+xx+"',sji='"+sji+"'  where id='"+id+"'");
 			if(flag == Constant.SUCCESS){
 				request.setAttribute("message", "操作成功！");
 				request.getRequestDispatcher("admin/xz/index.jsp").forward(request, response);

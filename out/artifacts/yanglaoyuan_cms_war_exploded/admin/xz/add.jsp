@@ -97,11 +97,11 @@ String message = (String)request.getAttribute("message");
 	}
 	else{ 
 		String method=request.getParameter("method");  
-		String id="";String lr="";String fy="";String kc="";String zt="";String xx=""; 
+		String id="";String hg="";String fy="";String kc="";String zt="";String xx="";
 		if(method.equals("upxz")){
 			id=request.getParameter("id");
 			List jlist = cb.get1Com("select * from xz where id='"+id+"'",6);
-			lr=jlist.get(1).toString();
+			hg=jlist.get(1).toString();
 			fy=jlist.get(2).toString();  
 			kc=jlist.get(3).toString();  
 			zt=jlist.get(4).toString();  
@@ -116,8 +116,8 @@ String message = (String)request.getAttribute("message");
 <table>
      <tr><input type="hidden" name="method" value="<%=method%>" /><input type="hidden" name="id" value="<%=id%>" />
      <td width="40%" align="right" nowrap="nowrap" >护工：</td>
-     <td><select name="lr" class="select_style">
-    <%if(method.equals("upfy")){ %><option value="<%=lr%>"><%=lr%></option> <%} %> 
+     <td><select name="hg" class="select_style">
+    <%if(method.equals("upfy")){ %><option value="<%=hg%>"><%=hg%></option> <%} %>
     <%List flist=cb.getCom("select * from admin where type='普通管理员' order by id desc",2);if(!flist.isEmpty()){for(int i=0;i<flist.size();i++){List list2=(List)flist.get(i);%>
     <option value=<%=list2.get(1).toString() %>><%=list2.get(1).toString() %></option>
     <%}} %>

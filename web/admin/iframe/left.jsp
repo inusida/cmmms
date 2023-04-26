@@ -223,7 +223,7 @@ window.onload = function() {
 		<img src="<%=basePath%>images/img/icon_old.png" height="30px" width="30px">
 		<div class="collapsed">
 			<span>老人信息管理</span>
-			<a href="<%=basePath %>admin/lr/index2.jsp" target="MainFrame">老人信息管理</a>
+			<a href="<%=basePath %>admin/lr/index.jsp" target="MainFrame">老人信息管理</a>
 			<a href="<%=basePath %>admin/lr/s.jsp" target="MainFrame">老人信息查询</a>
 		</div>
 	</li>
@@ -240,22 +240,22 @@ window.onload = function() {
 		<img src="<%=basePath%>images/img/look.png" height="30px" width="30px">
 		<div class="collapsed">
 			<span>请假信息查看</span>
-			<a href="<%=basePath %>admin/hgqj/index2.jsp" target="MainFrame">请假信息查看</a>
+			<a href="<%=basePath %>admin/hgqj/index.jsp" target="MainFrame">请假信息查看</a>
 		</div>
 	</li>
-<%--	<li style="display: flex; margin-left: 10px; margin-bottom: 20px">--%>
-<%--		<img src="<%=basePath%>images/img/icon_bed.png" height="30px" width="30px">--%>
-<%--		<div class="collapsed">--%>
-<%--			<span>床位分配管理</span>--%>
-<%--			<a href="<%=basePath %>admin/cw/index.jsp" target="MainFrame">床位分配管理</a>--%>
-<%--			<a href="<%=basePath %>admin/cw/s.jsp" target="MainFrame">床位信息查询</a>--%>
-<%--		</div>--%>
-<%--	</li>--%>
+	<li style="display: flex; margin-left: 10px; margin-bottom: 20px">
+		<img src="<%=basePath%>images/img/icon_bed.png" height="30px" width="30px">
+		<div class="collapsed">
+			<span>床位分配管理</span>
+			<a href="<%=basePath %>admin/cw/index.jsp" target="MainFrame">床位分配管理</a>
+			<a href="<%=basePath %>admin/cw/s.jsp" target="MainFrame">床位信息查询</a>
+		</div>
+	</li>
 	<li style="display: flex; margin-left: 10px; margin-bottom: 20px">
 		<img src="<%=basePath%>images/img/look1.png" height="30px" width="30px">
 		<div class="collapsed">
 			<span>护工薪资查看</span>
-			<a href="<%=basePath %>admin/xz/index2.jsp" target="MainFrame">护工薪资查看</a>
+			<a href="<%=basePath %>admin/xz/index.jsp" target="MainFrame">护工薪资查看</a>
 		</div>
 	</li>
 	<%} %>

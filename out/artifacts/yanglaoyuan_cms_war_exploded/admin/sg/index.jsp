@@ -150,6 +150,7 @@ String message = (String)request.getAttribute("message");
 	}
 	session.setAttribute("busMessageCount", cou + "");
 	session.setAttribute("busPage", page1);
+
 	List pagelist1 = cb.getMessage(Integer.parseInt(page1),"select * from sg order by id desc",4);
 	session.setAttribute("qqq", pagelist1);
 	int pageCount = cb.getPageCount(); //µÃµ½Ò³Êý  

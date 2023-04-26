@@ -111,6 +111,8 @@ function del()
 </script>
 
 <%
+List pagelist1 = null;
+int cou = 0;
 String message = (String)request.getAttribute("message");
 	if(message == null){
 		message = "";
@@ -146,14 +148,22 @@ String message = (String)request.getAttribute("message");
        </tr>
 <%   
 	cb.setEVERYPAGENUM(12);
-	int cou = cb.getMessageCount("select count(*) from hgqj ");//得到信息总数			        
+	if (type.equals("系统管理员")){
+        cou = cb.getMessageCount("select count(*) from hgqj ");//得到信息总数
+    }else{
+        cou = cb.getMessageCount("select count(*) from hgqj where lr='"+username+"' ");//得到信息总数
+    }
 	String page1=request.getParameter("page");
 	if(page1==null){
 		page1="1";
 	}
 	session.setAttribute("busMessageCount", cou + "");
 	session.setAttribute("busPage", page1);
-	List pagelist1 = cb.getMessage(Integer.parseInt(page1),"select * from hgqj order by id desc",4);
+	if (type.equals("系统管理员")){
+        pagelist1 = cb.getMessage(Integer.parseInt(page1),"select * from hgqj order by id desc",4);
+    }else{
+        pagelist1 = cb.getMessage(Integer.parseInt(page1),"select * from hgqj where lr='"+username+"' order by id desc",4);
+    }
 	session.setAttribute("qqq", pagelist1);
 	int pageCount = cb.getPageCount(); //得到页数  
 	session.setAttribute("busPageCount", pageCount + ""); 

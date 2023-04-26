@@ -82,6 +82,7 @@ String htmlData = request.getParameter("content1") != null ? request.getParamete
 </head>
 <%
 String message = (String)request.getAttribute("message");
+List flist = null;
 	if(message == null){
 		message = "";
 	}
@@ -92,7 +93,8 @@ String message = (String)request.getAttribute("message");
 	}
 	request.removeAttribute("message"); 
 	
-	String username=(String)session.getAttribute("user"); 
+	String username=(String)session.getAttribute("user");
+	String type=(String)session.getAttribute("type");
 	if(username==null){
 		response.sendRedirect(path+"index.jsp");
 	}
@@ -117,7 +119,12 @@ String message = (String)request.getAttribute("message");
      <td width="40%" align="right" nowrap="nowrap">老人姓名：</td>
      <td><select name="lr" class="select_style">
     <%if(method.equals("upsg")){ %><option value="<%=lr%>"><%=lr%></option> <%} %> 
-    <%List flist=cb.getCom("select * from lr order by id desc",2);if(!flist.isEmpty()){for(int i=0;i<flist.size();i++){List list2=(List)flist.get(i);%>
+    <%if(type.equals("系统管理员")){
+        flist=cb.getCom("select * from lr order by id desc",2);
+    }else{
+        flist=cb.getCom("select * from lr where hg = '"+username+"' order by id desc",2);
+    }
+    if(!flist.isEmpty()){for(int i=0;i<flist.size();i++){List list2=(List)flist.get(i);%>
     <option value=<%=list2.get(1).toString() %>><%=list2.get(1).toString() %></option>
     <%}} %>
     </select></td> 

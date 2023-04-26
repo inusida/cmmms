@@ -1,4 +1,6 @@
-<%@ page language="java" import="java.util.*,com.util.*"  contentType="text/html;charset=gb2312"%> 
+<%@ page language="java" import="demo.util.Common" contentType="text/html;charset=gb2312"%>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.List" %>
 <jsp:useBean id="cb" scope="page" class="demo.bean.ComBean" />
 <%
 String path = request.getContextPath();
@@ -146,9 +148,9 @@ String message = (String)request.getAttribute("message");
          <td nowrap="nowrap"><strong>实收</strong></td> 
          <td width="80" nowrap="nowrap"><strong>操作</strong></td>
        </tr>
-<%String word=Common.toChineseAndTrim(request.getParameter("word")); 
+<%String word= Common.toChineseAndTrim(request.getParameter("word"));
 	cb.setEVERYPAGENUM(12);
-	int cou = cb.getMessageCount("select count(*) from fy where lr like '%"+word+"%' ");//得到信息总数			        
+	int cou = cb.getMessageCount("select count(*) from fy where lr like '%"+word+"%' ");//得到信息总数
 	String page1=request.getParameter("page");
 	if(page1==null){
 		page1="1";
