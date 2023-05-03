@@ -174,8 +174,8 @@ String message = (String)request.getAttribute("message");
          <td nowrap="nowrap"><%=pagelist2.get(7).toString() %></td>
          <td nowrap="nowrap"><%=pagelist2.get(6).toString() %></td>
          <td nowrap="nowrap"><%=pagelist2.get(8).toString() %></td>  
-         <td nowrap="nowrap"><a href="<%=basePath%>admin/system/add.jsp?method=upm&id=<%=pagelist2.get(0).toString()%>">±à¼­</a> 
-         <a href="<%=basePath%>AdminServlet?method=delm&id=<%=pagelist2.get(0).toString()%>">É¾³ý</a></td>
+         <td nowrap="nowrap"><a href="<%=basePath%>admin/system/add.jsp?method=updateAdmin&id=<%=pagelist2.get(0).toString()%>">±à¼­</a>
+         <a href="<%=basePath%>AdminServlet?method=deleteAdmin&id=<%=pagelist2.get(0).toString()%>">É¾³ý</a></td>
        </tr>
 <% }} %>
        <tr align="center" style="height: 30px">
