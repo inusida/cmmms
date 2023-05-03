@@ -97,15 +97,16 @@ String message = (String)request.getAttribute("message");
 	}
 	else{ 
 		String method=request.getParameter("method");  
-		String id="";String hg="";String fy="";String kc="";String zt="";String xx="";
-		if(method.equals("upxz")){
+		String id="";String name = "";String baseSalary = "";String deduct = "";
+		String notes = "";String subsidy = "";
+		if(method.equals("updateSalary")){
 			id=request.getParameter("id");
-			List jlist = cb.get1Com("select * from xz where id='"+id+"'",6);
-			hg=jlist.get(1).toString();
-			fy=jlist.get(2).toString();  
-			kc=jlist.get(3).toString();  
-			zt=jlist.get(4).toString();  
-			xx=jlist.get(5).toString();  
+			List jlist = cb.get1Com("select * from salary_info where id='"+id+"'",6);
+			name = jlist.get(1).toString();
+			baseSalary = jlist.get(2).toString();
+			deduct = jlist.get(3).toString();
+			notes = jlist.get(4).toString();
+			subsidy = jlist.get(5).toString();
 		}	  
 %>
 <body >
@@ -116,33 +117,37 @@ String message = (String)request.getAttribute("message");
 <table>
      <tr><input type="hidden" name="method" value="<%=method%>" /><input type="hidden" name="id" value="<%=id%>" />
      <td width="40%" align="right" nowrap="nowrap" >护工：</td>
-     <td><select name="hg" class="select_style">
-    <%if(method.equals("upfy")){ %><option value="<%=hg%>"><%=hg%></option> <%} %>
+     <td><select name="name" class="select_style">
+    <%if(method.equals("updateOldManFee")){ %><option value="<%=name%>"><%=name%></option> <%} %>
     <%List flist=cb.getCom("select * from admin where type='普通管理员' order by id desc",2);if(!flist.isEmpty()){for(int i=0;i<flist.size();i++){List list2=(List)flist.get(i);%>
     <option value=<%=list2.get(1).toString() %>><%=list2.get(1).toString() %></option>
     <%}} %>
     </select></td> 
      </tr>
      <tr> 
-     <td width="40%" align="right" nowrap="nowrap" >工资：</td>
-     <td><input type="number" name="fy" class="input_style" value="<%=fy %>" required/></td>
+     <td width="40%" align="right" nowrap="nowrap" >基本工资：</td>
+     <td><input type="number" name="base_salary" class="input_style" value="<%=baseSalary %>" required/></td>
      </tr>
+    <tr>
+        <td width="40%" align="right" nowrap="nowrap" >补贴：</td>
+        <td><input type="number" name="subsidy" class="input_style" value="<%=subsidy %>" required/></td>
+    </tr>
      <tr> 
      <td width="40%" align="right" nowrap="nowrap" >扣除费用：</td>
-     <td><input type="number" name="kc" class="input_style" value="<%=kc %>" required/></td>
+     <td><input type="number" name="deduct" class="input_style" value="<%=deduct %>" required/></td>
      </tr>
-     <tr> 
-     <td width="40%" align="right" nowrap="nowrap" >发放状态：</td>
-     <td><select name=zt class="select_style">
-      <%if(method.equals("upfy")){ %><option value="<%=zt%>"><%=zt%></option> <%} %>
-        <option value="已发">已发</option>
-        <option value="未发">未发</option> 
-        </select></td> 
-     </tr>
+<%--     <tr> --%>
+<%--     <td width="40%" align="right" nowrap="nowrap" >发放状态：</td>--%>
+<%--     <td><select name=zt class="select_style">--%>
+<%--      <%if(method.equals("updateOldManFee")){ %><option value="<%=zt%>"><%=zt%></option> <%} %>--%>
+<%--        <option value="已发">已发</option>--%>
+<%--        <option value="未发">未发</option> --%>
+<%--        </select></td> --%>
+<%--     </tr>--%>
      <tr>
      <td width="40%" align="right" nowrap="nowrap" >详细信息：</td>
-     <td><textarea name="xx" class="input_style" rows="6" required><%=xx%></textarea></td>
-     </tr> 
+     <td><textarea name="notes" class="input_style" rows="6" required><%=notes%></textarea></td>
+     </tr>
      <tr>
      	<td style="text-align: center;" colspan="2"><input type="submit" value="确定"style="width:200px; height: 30px;background-color: #f6f8fa; border: 1px solid #d0d7de;font-weight:bold;border-radius: 6px;margin-top: 20px;" /></td>
      </tr>

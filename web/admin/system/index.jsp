@@ -164,7 +164,7 @@ String message = (String)request.getAttribute("message");
 		for(int i=0;i<pagelist3.size();i++){
 			List pagelist2 =(ArrayList)pagelist3.get(i);
 %>       
-       <tr align="center" style="height: 30px;text-align: center">
+       <tr align="center" style="height: 50px;" width="100">
          <td nowrap="nowrap"><%=i+1 %></td>
          <td nowrap="nowrap"><%=pagelist2.get(1).toString() %></td> 
          <td nowrap="nowrap"><%=pagelist2.get(3).toString() %></td>
@@ -173,21 +173,21 @@ String message = (String)request.getAttribute("message");
          <td nowrap="nowrap"><%=pagelist2.get(7).toString() %></td>
          <td nowrap="nowrap"><%=pagelist2.get(6).toString() %></td>
          <td nowrap="nowrap"><%=pagelist2.get(8).toString() %></td>  
-         <td nowrap="nowrap">
-             <a style="text-decoration: none; width: 50px; height: 40px;background: #FFFFFF;color: #000000;" href="<%=basePath%>admin/system/add.jsp?method=upm&id=<%=pagelist2.get(0).toString()%>">编辑</a>
-         <a style="text-decoration: none; width: 50px; height: 40px;background: rgb(241,18,18);color: #FFFFFF;" href="<%=basePath%>AdminServlet?method=delm&id=<%=pagelist2.get(0).toString()%>">删除</a></td>
+         <td nowrap="nowrap" style="display: flex;align-items: center; padding: 10px">
+             <a style="text-decoration: none; width: 50px; height: 30px;background: #FFFFFF;color: #000000;border: 1px solid #333333;display: block; text-align: center; line-height: 30px; border-radius: 5px; margin-right: 10px" href="<%=basePath%>admin/system/add.jsp?method=updateAdmin&id=<%=pagelist2.get(0).toString()%>">编辑</a>
+         <a style="text-decoration: none; width: 50px; height: 30px;background: rgb(241,18,18);color: #FFFFFF;border: 1px solid #333333;display: block; text-align: center; line-height: 30px; border-radius: 5px" href="<%=basePath%>AdminServlet?method=deleteAdmin&id=<%=pagelist2.get(0).toString()%>">删除</a></td>
        </tr>
 <% }} %>
-       <tr align="center" style="height: 30px">
+       <tr align="center" style="height: 40px">
          <td nowrap="nowrap" colspan="11">
          <input type="hidden" name="pageCount" value="<%= session.getAttribute("busPageCount").toString()%>" /><!--//用于给上面javascript传值-->
 	 <input type="hidden" name="page" value="<%=session.getAttribute("busPage").toString()%>" /><!--//用于给上面javascript传值-->         
-					<a href="#" onClick="top2()">首页</a>&nbsp;&nbsp;&nbsp;
-		<a href="#" onClick="pre2()">上一页</a>&nbsp;&nbsp;&nbsp;
+					<a href="#" onClick="top2()" style="text-decoration: none; color: #0f0f0f">首页</a>&nbsp;&nbsp;&nbsp;
+		<a href="#" onClick="pre2()"  style="text-decoration: none; color: #0f0f0f">上一页</a>&nbsp;&nbsp;&nbsp;
 		 共<%=session.getAttribute("busMessageCount").toString()%>条记录,共计<%=session.getAttribute("busPageCount").toString()%>页,当前第<%=session.getAttribute("busPage").toString()%>页&nbsp;&nbsp;&nbsp;
-		<a href="#" onClick="next2()">下一页</a>&nbsp;&nbsp;&nbsp;
-		<a href="#" onClick="last2()">尾页</a>
-	 第<input name="busjump" type="text" class="span1" />页 <a href="#" onClick="bjump2()">转到</a>&nbsp;&nbsp;&nbsp; 
+		<a href="#" onClick="next2()"  style="text-decoration: none; color: #0f0f0f">下一页</a>&nbsp;&nbsp;&nbsp;
+		<a href="#" onClick="last2()"  style="text-decoration: none; color: #0f0f0f">尾页</a>
+	 第<input name="busjump" type="text" class="span1" />页 <a href="#" onClick="bjump2()" style="text-decoration: none; color: #0f0f0f">转到</a>&nbsp;&nbsp;&nbsp;
          </td>
        </tr>        
      </tbody>

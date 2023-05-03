@@ -100,13 +100,13 @@ List flist = null;
 	}
 	else{ 
 		String method=request.getParameter("method");  
-		String id="";String lr="";String sj="";String xx=""; 
-		if(method.equals("upsg")){
+		String id="";String name = "";String time = "";String notes = "";
+		if(method.equals("updateAccident")){
 			id=request.getParameter("id");
-			List jlist = cb.get1Com("select * from sg where id='"+id+"'",4);
-			lr=jlist.get(1).toString();
-			sj=jlist.get(2).toString();  
-			xx=jlist.get(3).toString();  
+			List jlist = cb.get1Com("select * from accident_info where id='"+id+"'",4);
+			name = jlist.get(1).toString();
+			time = jlist.get(2).toString();
+			notes = jlist.get(3).toString();
 		}	  
 %>
 <body >
@@ -117,8 +117,8 @@ List flist = null;
 <table >
      <tr><input type="hidden" name="method" value="<%=method%>" /><input type="hidden" name="id" value="<%=id%>" />
      <td width="40%" align="right" nowrap="nowrap">老人姓名：</td>
-     <td><select name="lr" class="select_style">
-    <%if(method.equals("upsg")){ %><option value="<%=lr%>"><%=lr%></option> <%} %> 
+     <td><select name="name" class="select_style">
+    <%if(method.equals("updateAccident")){ %><option value="<%=name%>"><%=name%></option> <%} %>
     <%if(type.equals("系统管理员")){
         flist=cb.getCom("select * from lr order by id desc",2);
     }else{
@@ -131,11 +131,11 @@ List flist = null;
      </tr>
      <tr> 
      <td width="40%" align="right" nowrap="nowrap" >发生时间：</td>
-     <td><input type="date" name="sj" class="input_style" value="<%=sj %>" required/></td>
+     <td><input type="date" name="time" class="input_style" value="<%=time %>" required/></td>
      </tr>
      <tr>
      <td width="40%" align="right" nowrap="nowrap" >详细信息：</td>
-     <td><textarea name="xx" class="input_style" rows="6" required><%=xx%></textarea></td>
+     <td><textarea name="notes" class="input_style" rows="6" required><%=notes%></textarea></td>
      </tr> 
      <tr>
      	<td style="text-align: center;" colspan="2"><input type="submit" value="确定"  style="width:200px; height: 30px;background-color: #f6f8fa; border: 1px solid #d0d7de;font-weight:bold;border-radius: 6px;margin-top: 20px;"/></td>

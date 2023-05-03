@@ -142,17 +142,17 @@ window.onload = function() {
 		<div class="collapsed">
 				<span class="span_style">系统用户管理</span>
 			<a href="<%=basePath %>admin/system/index.jsp" target="MainFrame">系统用户管理</a>
-			<a href="<%=basePath %>admin/system/add.jsp?method=addm" target="MainFrame">增加系统用户</a>
+			<a href="<%=basePath %>admin/system/add.jsp?method=addAdmin" target="MainFrame">增加系统用户</a>
 			<a href="<%=basePath %>admin/system/s.jsp" target="MainFrame">系统用户查询</a>
 		</div>
 	</li>
 
-	<li style="display: flex; margin-left: 10px; margin-bottom: 20px">
+	<li style="display: flex; margin-left: 10px; margin-bottom: 20px;">
 		<img src="<%=basePath%>images/img/icon_old.png" height="30px" width="30px">
 			<div class="collapsed">
 				<span>老人信息管理</span>
 				<a href="<%=basePath %>admin/lr/index.jsp" target="MainFrame">老人信息管理</a>
-				<a href="<%=basePath %>admin/lr/add.jsp?method=addlr" target="MainFrame">增加老人信息</a>
+				<a href="<%=basePath %>admin/lr/add.jsp?method=addOldman" target="MainFrame">增加老人信息</a>
 				 <a href="<%=basePath %>admin/lr/s.jsp" target="MainFrame">老人信息查询</a>
 			</div>
 	</li>
@@ -162,7 +162,7 @@ window.onload = function() {
 			<div class="collapsed">
 				<span>事故记录管理</span>
 				 <a href="<%=basePath %>admin/sg/index.jsp" target="MainFrame">事故记录管理</a>
-				<a href="<%=basePath %>admin/sg/add.jsp?method=addsg" target="MainFrame">增加事故记录</a>
+				<a href="<%=basePath %>admin/sg/add.jsp?method=addAccident" target="MainFrame">增加事故记录</a>
 				 <a href="<%=basePath %>admin/sg/s.jsp" target="MainFrame">事故记录查询</a>
 			</div>
 	</li>
@@ -172,7 +172,7 @@ window.onload = function() {
 		<div class="collapsed">
 			<span>请假信息管理</span>
 			<a href="<%=basePath %>admin/qj/index.jsp" target="MainFrame">请假信息管理</a>
-			<a href="<%=basePath %>admin/qj/add.jsp?method=addqj" target="MainFrame">增加请假信息</a>
+			<a href="<%=basePath %>admin/qj/add.jsp?method=addLeave" target="MainFrame">增加请假信息</a>
 			<a href="<%=basePath %>admin/qj/s.jsp" target="MainFrame">请假信息查询</a>
 		</div>
 	</li>
@@ -194,7 +194,7 @@ window.onload = function() {
 		<div class="collapsed">
 			<span>入住费用管理</span>
 			<a href="<%=basePath %>admin/fy/index.jsp" target="MainFrame">入住费用管理</a>
-			<a href="<%=basePath %>admin/fy/add.jsp?method=addfy" target="MainFrame">增加入住费用</a>
+			<a href="<%=basePath %>admin/fy/add.jsp?method=addOldManFee" target="MainFrame">增加入住费用</a>
 			<a href="<%=basePath %>admin/fy/s.jsp" target="MainFrame">入住费用查询</a>
 		</div>
 	</li>
@@ -204,7 +204,7 @@ window.onload = function() {
 		<div class="collapsed">
 			<span>护工薪资管理</span>
 			<a href="<%=basePath %>admin/xz/index.jsp" target="MainFrame">护工薪资管理</a>
-			<a href="<%=basePath %>admin/xz/add.jsp?method=addxz" target="MainFrame">增加护工薪资</a>
+			<a href="<%=basePath %>admin/xz/add.jsp?method=addSalary" target="MainFrame">增加护工薪资</a>
 		</div>
 	</li>
 
@@ -213,7 +213,7 @@ window.onload = function() {
 		<div class="collapsed">
 			<span>护工请假管理</span>
 			<a href="<%=basePath %>admin/hgqj/index.jsp" target="MainFrame">护工请假管理</a>
-			<a href="<%=basePath %>admin/hgqj/add.jsp?method=addhgqj" target="MainFrame">增加护工请假</a>
+			<a href="<%=basePath %>admin/hgqj/add.jsp?method=addNursingworkerLeave" target="MainFrame">增加护工请假</a>
 			<a href="<%=basePath %>admin/hgqj/s.jsp" target="MainFrame">护工请假查询</a>
 		</div>
 	</li>
@@ -232,7 +232,7 @@ window.onload = function() {
 <%--		<div class="collapsed">--%>
 <%--			<span>事故记录管理</span>--%>
 <%--			<a href="<%=basePath %>admin/sg/index.jsp" target="MainFrame">事故记录管理</a>--%>
-<%--			<a href="<%=basePath %>admin/sg/add.jsp?method=addsg" target="MainFrame">增加事故记录</a>--%>
+<%--			<a href="<%=basePath %>admin/sg/add.jsp?method=addAccident" target="MainFrame">增加事故记录</a>--%>
 <%--			<a href="<%=basePath %>admin/sg/s.jsp" target="MainFrame">事故记录查询</a>--%>
 <%--		</div>--%>
 <%--	</li>--%>

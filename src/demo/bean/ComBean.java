@@ -134,6 +134,7 @@ public class ComBean {
 		}
 	}
 	public String getString(String sql){
+		System.out.printf(sql);
 		DBO dbo = new DBO();
 		list = new ArrayList();
 		dbo.open();

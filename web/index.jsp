@@ -80,7 +80,21 @@
     }
 
 </style>
-<body >
+
+<%
+    String message = (String)request.getAttribute("message");
+    if(message == null){
+        message = "";
+    }
+    if (!message.trim().equals("")){
+        out.println("<script language='javascript'>");
+        out.println("alert('"+message+"');");
+        out.println("</script>");
+    }
+    request.removeAttribute("message");
+%>
+
+    <body >
 <div class="login-box">
     <img src="./images/login-01.png"/>
 <FORM name="loginform" method="post" action="<%=basePath %>AdminServlet"> 

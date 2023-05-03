@@ -139,19 +139,20 @@ String message = (String)request.getAttribute("message");
        <tr align="center" style="height: 50px">
          <td nowrap="nowrap"><strong>序号</strong></td>
          <td nowrap="nowrap"><strong>护工</strong></td> 
-         <td nowrap="nowrap"><strong>工资</strong></td>
+         <td nowrap="nowrap"><strong>基本工资</strong></td>
+           <td nowrap="nowrap"><strong>补贴</strong></td>
+           <td nowrap="nowrap"><strong>工资总额</strong></td>
          <td nowrap="nowrap"><strong>扣除费用</strong></td>
-         <td nowrap="nowrap"><strong>交费状态</strong></td>
-         <td nowrap="nowrap"><strong>详细信息</strong></td> 
-         <td nowrap="nowrap"><strong>总金额</strong></td>
+         <td nowrap="nowrap"><strong>详细信息</strong></td>
+         <td nowrap="nowrap"><strong>应发工资</strong></td>
          <td width="80" nowrap="nowrap"><strong>操作</strong></td>
        </tr>
 <%   
 	cb.setEVERYPAGENUM(12);
 	if (type.equals("系统管理员")){
-        cou = cb.getMessageCount("select count(*) from xz ");//得到信息总数
+        cou = cb.getMessageCount("select count(*) from salary_info ");//得到信息总数
     }else{
-        cou = cb.getMessageCount("select count(*) from xz where hg='"+username+"'");//得到信息总数
+        cou = cb.getMessageCount("select count(*) from salary_info where name='"+username+"'");//得到信息总数
     }
 
 	String page1=request.getParameter("page");
@@ -161,9 +162,9 @@ String message = (String)request.getAttribute("message");
 	session.setAttribute("busMessageCount", cou + "");
 	session.setAttribute("busPage", page1);
 	if (type.equals("系统管理员")){
-        pagelist1 = cb.getMessage(Integer.parseInt(page1),"select * from xz order by id desc",7);
+        pagelist1 = cb.getMessage(Integer.parseInt(page1),"select * from salary_info order by id desc",8);
     }else{
-	    pagelist1 = cb.getMessage(Integer.parseInt(page1),"select * from xz where hg='"+username+"' order by id desc",7);
+	    pagelist1 = cb.getMessage(Integer.parseInt(page1),"select * from salary_info where name ='"+username+"' order by id desc",8);
     }
 	session.setAttribute("qqq", pagelist1);
 	int pageCount = cb.getPageCount(); //得到页数  
@@ -173,17 +174,18 @@ String message = (String)request.getAttribute("message");
 		for(int i=0;i<pagelist3.size();i++){
 			List pagelist2 =(ArrayList)pagelist3.get(i);
 %>       
-       <tr align="center" style="height: 30px">
+       <tr align="center" style="height: 50px">
          <td nowrap="nowrap"><%=i+1 %></td>
          <td nowrap="nowrap"><%=pagelist2.get(1).toString() %></td>   
          <td nowrap="nowrap"><%=pagelist2.get(2).toString() %></td>   
-         <td nowrap="nowrap"><%=pagelist2.get(3).toString() %></td>  
-         <td nowrap="nowrap"><%=pagelist2.get(4).toString() %></td>  
-         <td nowrap="nowrap"><%=pagelist2.get(5).toString() %></td>  
-         <td nowrap="nowrap"><%=pagelist2.get(6).toString() %></td>   
-         <td nowrap="nowrap">
-         <a href="<%=basePath%>admin/xz/add.jsp?method=upxz&id=<%=pagelist2.get(0).toString()%>">修改</a> 
-         <a href="<%=basePath%>ComServlet?method=delxz&id=<%=pagelist2.get(0).toString()%>">删除</a>
+         <td nowrap="nowrap"><%=pagelist2.get(5).toString() %></td>
+         <td nowrap="nowrap"><%=pagelist2.get(6).toString() %></td>
+         <td nowrap="nowrap"><%=pagelist2.get(3).toString() %></td>
+         <td nowrap="nowrap"><%=pagelist2.get(4).toString() %></td>
+           <td nowrap="nowrap"><%=pagelist2.get(7).toString() %></td>
+           <td nowrap="nowrap" style="display: flex;align-items: center; padding: 10px">
+         <a style="text-decoration: none; width: 50px; height: 30px;background: #FFFFFF;color: #000000;border: 1px solid #333333;display: block; text-align: center; line-height: 30px; border-radius: 5px; margin-right: 10px" href="<%=basePath%>admin/xz/add.jsp?method=updateSalary&id=<%=pagelist2.get(0).toString()%>">修改</a>
+         <a style="text-decoration: none; width: 50px; height: 30px;background: rgb(241,18,18);color: #FFFFFF;border: 1px solid #333333;display: block; text-align: center; line-height: 30px; border-radius: 5px" href="<%=basePath%>ComServlet?method=deleteSalary&id=<%=pagelist2.get(0).toString()%>">删除</a>
          </td>
        </tr>
 <% }} %>
@@ -191,12 +193,12 @@ String message = (String)request.getAttribute("message");
          <td nowrap="nowrap" colspan="9"> 
          <input type="hidden" name="pageCount" value="<%= session.getAttribute("busPageCount").toString()%>" /><!--//用于给上面javascript传值-->
 	 <input type="hidden" name="page" value="<%=session.getAttribute("busPage").toString()%>" /><!--//用于给上面javascript传值-->         
-					<a href="#" onClick="top2()">首页</a>&nbsp;&nbsp;&nbsp;
-		<a href="#" onClick="pre2()">上一页</a>&nbsp;&nbsp;&nbsp;
+					<a href="#" onClick="top2()" style="text-decoration: none; color: #0f0f0f">首页</a>&nbsp;&nbsp;&nbsp;
+		<a href="#" onClick="pre2()" style="text-decoration: none; color: #0f0f0f">上一页</a>&nbsp;&nbsp;&nbsp;
 		 共<%=session.getAttribute("busMessageCount").toString()%>条记录,共计<%=session.getAttribute("busPageCount").toString()%>页,当前第<%=session.getAttribute("busPage").toString()%>页&nbsp;&nbsp;&nbsp;
-		<a href="#" onClick="next2()">下一页</a>&nbsp;&nbsp;&nbsp;
-		<a href="#" onClick="last2()">尾页</a>
-	 第<input name="busjump" type="text" class="span1" />页 <a href="#" onClick="bjump2()">转到</a>&nbsp;&nbsp;&nbsp; 
+		<a href="#" onClick="next2()" style="text-decoration: none; color: #0f0f0f">下一页</a>&nbsp;&nbsp;&nbsp;
+		<a href="#" onClick="last2()" style="text-decoration: none; color: #0f0f0f">尾页</a>
+	 第<input name="busjump" type="text" class="span1" />页 <a href="#" onClick="bjump2()" style="text-decoration: none; color: #0f0f0f">转到</a>&nbsp;&nbsp;&nbsp;
          </td>
        </tr>        
      </tbody>

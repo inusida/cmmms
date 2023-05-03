@@ -51,7 +51,7 @@ public class AdminServlet extends HttpServlet {
 		response.setContentType(Constant.CONTENTTYPE);
 		request.setCharacterEncoding(Constant.CHARACTERENCODING);
 		String date=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime());
-		String date2=new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
+//		String date2=new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
 		try{
 			String method=request.getParameter("method").trim();
 			ComBean cBean = new ComBean();
@@ -97,7 +97,7 @@ public class AdminServlet extends HttpServlet {
 				session.removeAttribute("user");  session.removeAttribute("type");
 				request.getRequestDispatcher("index.jsp").forward(request, response);
 			}
-			else if(method.equals("addm")){//增加系统用户
+			else if(method.equals("addAdmin")){//增加系统用户
 				String username = request.getParameter("username");
 				String password = request.getParameter("password");
 				String realname = request.getParameter("realname");
@@ -110,11 +110,11 @@ public class AdminServlet extends HttpServlet {
 					int flag=cBean.comUp("insert into admin(username,password,realname,sex,age,address,tel,addtime ) " +
 							"values('"+username+"','"+password+"','"+realname+"','"+sex+"','"+age+"','"+address+"','"+tel+"','"+date+"' )");
 					if(flag == Constant.SUCCESS){
-						request.setAttribute("message", "操作成功！");
+						request.setAttribute("message", "添加成功！");
 						request.getRequestDispatcher("admin/system/index.jsp").forward(request, response);
 					}
 					else {
-						request.setAttribute("message", "操作失败！");
+						request.setAttribute("message", "添加失败！");
 						request.getRequestDispatcher("admin/system/index.jsp").forward(request, response);
 					}
 				}
@@ -123,7 +123,7 @@ public class AdminServlet extends HttpServlet {
 					request.getRequestDispatcher("admin/system/index.jsp").forward(request, response);
 				}
 			}
-			else if(method.equals("upm")){//修改系统用户
+			else if(method.equals("updateAdmin")){//修改系统用户
 				String id = request.getParameter("id");
 				String password = request.getParameter("password");
 				String realname = request.getParameter("realname");
@@ -134,23 +134,23 @@ public class AdminServlet extends HttpServlet {
 				int flag=cBean.comUp("update admin set password='"+password+"',realname='"+realname+"',sex='"+sex+"',age='"+age+"'," +
 						"address='"+address+"',tel='"+tel+"' where id='"+id+"'");
 				if(flag == Constant.SUCCESS){
-					request.setAttribute("message", "操作成功！");
+					request.setAttribute("message", "修改成功！");
 					request.getRequestDispatcher("admin/system/index.jsp").forward(request, response);
 				}
 				else {
-					request.setAttribute("message", "操作失败！");
+					request.setAttribute("message", "修改失败！");
 					request.getRequestDispatcher("admin/system/index.jsp").forward(request, response);
 				}
 			}
-			else if(method.equals("delm")){//删除系统用户
+			else if(method.equals("deleteAdmin")){//删除系统用户
 				String id = request.getParameter("id");
 				int flag=cBean.comUp("delete from admin where id='"+id+"'");
 				if(flag == Constant.SUCCESS){
-					request.setAttribute("message", "操作成功！");
+					request.setAttribute("message", "删除成功！");
 					request.getRequestDispatcher("admin/system/index.jsp").forward(request, response);
 				}
 				else {
-					request.setAttribute("message", "操作失败！");
+					request.setAttribute("message", "删除失败！");
 					request.getRequestDispatcher("admin/system/index.jsp").forward(request, response);
 				}
 			}

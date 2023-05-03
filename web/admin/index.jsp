@@ -10,6 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 </HEAD>
 <%
+
 	String username=(String)session.getAttribute("user");
 	if(username==null){
 		response.sendRedirect(path+"/index.jsp");

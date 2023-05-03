@@ -138,25 +138,26 @@ String message = (String)request.getAttribute("message");
         style=" width: 100%; margin-bottom: 10px;border-color: #f1f2f6;">
      <tbody>
        <tr align="center" style="height: 50px">
-         <td nowrap="nowrap"><strong>序号</strong></td>
-         <td nowrap="nowrap"><strong>护工</strong></td> 
-         <td nowrap="nowrap"><strong>工资</strong></td>
-         <td nowrap="nowrap"><strong>扣除费用</strong></td>
-         <td nowrap="nowrap"><strong>交费状态</strong></td>
-         <td nowrap="nowrap"><strong>详细信息</strong></td> 
-         <td nowrap="nowrap"><strong>实付</strong></td> 
+           <td nowrap="nowrap"><strong>序号</strong></td>
+           <td nowrap="nowrap"><strong>护工</strong></td>
+           <td nowrap="nowrap"><strong>基本工资</strong></td>
+           <td nowrap="nowrap"><strong>补贴</strong></td>
+           <td nowrap="nowrap"><strong>工资总额</strong></td>
+           <td nowrap="nowrap"><strong>扣除费用</strong></td>
+           <td nowrap="nowrap"><strong>详细信息</strong></td>
+           <td nowrap="nowrap"><strong>应发工资</strong></td>
          <td width="80" nowrap="nowrap"><strong>操作</strong></td>
        </tr>
 <%String word= Common.toChineseAndTrim(request.getParameter("word"));
 	cb.setEVERYPAGENUM(12);
-	int cou = cb.getMessageCount("select count(*) from xz where hg like '%"+word+"%' ");//得到信息总数
+	int cou = cb.getMessageCount("select count(*) from salary_info where name like '%"+word+"%' ");//得到信息总数
 	String page1=request.getParameter("page");
 	if(page1==null){
 		page1="1";
 	}
 	session.setAttribute("busMessageCount", cou + "");
 	session.setAttribute("busPage", page1);
-	List pagelist1 = cb.getMessage(Integer.parseInt(page1),"select * from xz where hg like '%"+word+"%'   order by id desc",7);
+	List pagelist1 = cb.getMessage(Integer.parseInt(page1),"select * from salary_info where name like '%"+word+"%'   order by id desc",8);
 	session.setAttribute("qqq", pagelist1);
 	int pageCount = cb.getPageCount(); //得到页数  
 	session.setAttribute("busPageCount", pageCount + ""); 
@@ -167,15 +168,16 @@ String message = (String)request.getAttribute("message");
 %>       
        <tr align="center" style="height: 30px">
          <td nowrap="nowrap"><%=i+1 %></td>
-         <td nowrap="nowrap"><%=pagelist2.get(1).toString() %></td>   
-         <td nowrap="nowrap"><%=pagelist2.get(2).toString() %></td>   
-         <td nowrap="nowrap"><%=pagelist2.get(3).toString() %></td>  
-         <td nowrap="nowrap"><%=pagelist2.get(4).toString() %></td>  
-         <td nowrap="nowrap"><%=pagelist2.get(5).toString() %></td>  
-         <td nowrap="nowrap"><%=pagelist2.get(6).toString() %></td>   
+           <td nowrap="nowrap"><%=pagelist2.get(1).toString() %></td>
+           <td nowrap="nowrap"><%=pagelist2.get(2).toString() %></td>
+           <td nowrap="nowrap"><%=pagelist2.get(5).toString() %></td>
+           <td nowrap="nowrap"><%=pagelist2.get(6).toString() %></td>
+           <td nowrap="nowrap"><%=pagelist2.get(3).toString() %></td>
+           <td nowrap="nowrap"><%=pagelist2.get(4).toString() %></td>
+           <td nowrap="nowrap"><%=pagelist2.get(7).toString() %></td>
          <td nowrap="nowrap">
-         <a href="<%=basePath%>admin/xz/add.jsp?method=upxz&id=<%=pagelist2.get(0).toString()%>">修改</a> 
-         <a href="<%=basePath%>ComServlet?method=delxz&id=<%=pagelist2.get(0).toString()%>">删除</a>
+         <a href="<%=basePath%>admin/xz/add.jsp?method=updateSalary&id=<%=pagelist2.get(0).toString()%>">修改</a>
+         <a href="<%=basePath%>ComServlet?method=deleteSalary&id=<%=pagelist2.get(0).toString()%>">删除</a>
          </td>
        </tr>
 <% }} %>

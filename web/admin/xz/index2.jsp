@@ -135,24 +135,25 @@ String message = (String)request.getAttribute("message");
         style=" width: 100%; margin-bottom: 10px;border-color: #f1f2f6;">
      <tbody>
        <tr align="center" style="height: 50px">
-         <td nowrap="nowrap"><strong>序号</strong></td>
-         <td nowrap="nowrap"><strong>护工</strong></td> 
-         <td nowrap="nowrap"><strong>工资</strong></td>
-         <td nowrap="nowrap"><strong>扣除费用</strong></td>
-         <td nowrap="nowrap"><strong>交费状态</strong></td>
-         <td nowrap="nowrap"><strong>详细信息</strong></td> 
-         <td nowrap="nowrap"><strong>总金额</strong></td>
+           <td nowrap="nowrap"><strong>序号</strong></td>
+           <td nowrap="nowrap"><strong>护工</strong></td>
+           <td nowrap="nowrap"><strong>基本工资</strong></td>
+           <td nowrap="nowrap"><strong>补贴</strong></td>
+           <td nowrap="nowrap"><strong>工资总额</strong></td>
+           <td nowrap="nowrap"><strong>扣除费用</strong></td>
+           <td nowrap="nowrap"><strong>详细信息</strong></td>
+           <td nowrap="nowrap"><strong>应发工资</strong></td>
        </tr>
 <%   
 	cb.setEVERYPAGENUM(12);
-	int cou = cb.getMessageCount("select count(*) from xz where hg='"+username+"'");//得到信息总数
+	int cou = cb.getMessageCount("select count(*) from salary_info where name ='"+username+"'");//得到信息总数
 	String page1=request.getParameter("page");
 	if(page1==null){
 		page1="1";
 	}
 	session.setAttribute("busMessageCount", cou + "");
 	session.setAttribute("busPage", page1);
-	List pagelist1 = cb.getMessage(Integer.parseInt(page1),"select * from xz where hg='"+username+"' order by id desc",7);
+	List pagelist1 = cb.getMessage(Integer.parseInt(page1),"select * from salary_info where name='"+username+"' order by id desc",8);
 	session.setAttribute("qqq", pagelist1);
 	int pageCount = cb.getPageCount(); //得到页数  
 	session.setAttribute("busPageCount", pageCount + ""); 
@@ -163,12 +164,13 @@ String message = (String)request.getAttribute("message");
 %>       
        <tr align="center" style="height: 30px">
          <td nowrap="nowrap"><%=i+1 %></td>
-         <td nowrap="nowrap"><%=pagelist2.get(1).toString() %></td>   
-         <td nowrap="nowrap"><%=pagelist2.get(2).toString() %></td>   
-         <td nowrap="nowrap"><%=pagelist2.get(3).toString() %></td>  
-         <td nowrap="nowrap"><%=pagelist2.get(4).toString() %></td>  
-         <td nowrap="nowrap"><%=pagelist2.get(5).toString() %></td>  
-         <td nowrap="nowrap"><%=pagelist2.get(6).toString() %></td>  
+           <td nowrap="nowrap"><%=pagelist2.get(1).toString() %></td>
+           <td nowrap="nowrap"><%=pagelist2.get(2).toString() %></td>
+           <td nowrap="nowrap"><%=pagelist2.get(5).toString() %></td>
+           <td nowrap="nowrap"><%=pagelist2.get(6).toString() %></td>
+           <td nowrap="nowrap"><%=pagelist2.get(3).toString() %></td>
+           <td nowrap="nowrap"><%=pagelist2.get(4).toString() %></td>
+           <td nowrap="nowrap"><%=pagelist2.get(7).toString() %></td>
        </tr>
 <% }} %>
        <tr align="center" style="height: 30px">

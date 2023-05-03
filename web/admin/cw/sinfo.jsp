@@ -138,29 +138,30 @@ String message = (String)request.getAttribute("message");
        style=" width: 100%; margin-bottom: 10px;border-color: #f1f2f6;">
 <tbody>
        <tr align="center" style="height: 50px">
-         <td nowrap="nowrap"><strong>序号</strong></td>
-         <td nowrap="nowrap"><strong>姓名</strong></td> 
-         <td nowrap="nowrap"><strong>性别</strong></td>
-         <td nowrap="nowrap"><strong>年龄</strong></td>
-         <td nowrap="nowrap"><strong>身体状况</strong></td>
-         <td nowrap="nowrap"><strong>户籍</strong></td>
-         <td nowrap="nowrap"><strong>身份证</strong></td>
-         <td nowrap="nowrap"><strong>联系人</strong></td>
-         <td nowrap="nowrap"><strong>联系电话</strong></td>
-         <td nowrap="nowrap"><strong>家庭住址</strong></td>
-         <td nowrap="nowrap"><strong>床位号</strong></td> 
-         <td nowrap="nowrap"><strong>护工编号</strong></td> 
-         <td nowrap="nowrap"><strong>入住日期</strong></td> 
-         <td nowrap="nowrap"><strong>出院日期</strong></td> 
-         <td width="80" nowrap="nowrap"><strong>操作</strong></td>
+           <td nowrap="nowrap"><strong>序号</strong></td>
+
+           <td nowrap="nowrap"><strong>姓名</strong></td>
+           <td nowrap="nowrap"><strong>id</strong></td>
+           <%--         <td nowrap="nowrap"><strong>年龄</strong></td>--%>
+           <%--         <td nowrap="nowrap"><strong>身体状况</strong></td>--%>
+           <%--         <td nowrap="nowrap"><strong>户籍</strong></td>--%>
+           <%--         <td nowrap="nowrap"><strong>身份证</strong></td>--%>
+           <%--         <td nowrap="nowrap"><strong>联系人</strong></td>--%>
+           <%--         <td nowrap="nowrap"><strong>联系电话</strong></td>--%>
+           <%--         <td nowrap="nowrap"><strong>家庭住址</strong></td>--%>
+           <td nowrap="nowrap"><strong>床位号</strong></td>
+           <%--         <td nowrap="nowrap"><strong>护工编号</strong></td> --%>
+           <td nowrap="nowrap"><strong>入住日期</strong></td>
+           <td nowrap="nowrap"><strong>出院日期</strong></td>
+           <td width="80" nowrap="nowrap"><strong>操作</strong></td>
        </tr>
 <%String word= Common.toChineseAndTrim(request.getParameter("word"));
 	cb.setEVERYPAGENUM(12);
 	int cou = 0;
     if (type.equals("系统管理员")){
-        cou = cb.getMessageCount("select count(*) from lr where cw like '%"+word+"%' ");//得到信息总数
+        cou = cb.getMessageCount("select count(*) from oldman_info where bednum like '%"+word+"%' ");//得到信息总数
     }else{
-        cou = cb.getMessageCount("select count(*) from lr where cw like '%"+word+"%' hg = '" + username+"'" );//得到信息总数
+        cou = cb.getMessageCount("select count(*) from oldman_info where bednum like '%"+word+"%' nursingworker = '" + username+"'" );//得到信息总数
     }
 	String page1=request.getParameter("page");
 	if(page1==null){
@@ -170,9 +171,9 @@ String message = (String)request.getAttribute("message");
 	session.setAttribute("busPage", page1);
 	List pagelist1;
 	if (type.equals("系统管理员")){
-        pagelist1 = cb.getMessage(Integer.parseInt(page1),"select * from lr where cw like '%"+word+"%'   order by id desc",14);
+        pagelist1 = cb.getMessage(Integer.parseInt(page1),"select * from oldman_info where bednum like '%"+word+"%'   order by id desc",14);
     }else{
-        pagelist1 = cb.getMessage(Integer.parseInt(page1),"select * from lr where cw like '%"+word+"%' and hg = '"+username+"'  order by id desc",14);
+        pagelist1 = cb.getMessage(Integer.parseInt(page1),"select * from oldman_info where bednum like '%"+word+"%' and nursingworker = '"+username+"'  order by id desc",14);
     }
 	session.setAttribute("qqq", pagelist1);
 	int pageCount = cb.getPageCount(); //得到页数  
@@ -184,21 +185,22 @@ String message = (String)request.getAttribute("message");
 %>       
        <tr align="center" style="height: 30px">
          <td nowrap="nowrap"><%=i+1 %></td>
-         <td nowrap="nowrap"><%=pagelist2.get(1).toString() %></td>   
-         <td nowrap="nowrap"><%=pagelist2.get(2).toString() %></td>   
-         <td nowrap="nowrap"><%=pagelist2.get(3).toString() %></td>    
-         <td nowrap="nowrap"><%=pagelist2.get(4).toString() %></td>    
-         <td nowrap="nowrap"><%=pagelist2.get(5).toString() %></td>    
-         <td nowrap="nowrap"><%=pagelist2.get(6).toString() %></td>    
-         <td nowrap="nowrap"><%=pagelist2.get(7).toString() %></td>    
-         <td nowrap="nowrap"><%=pagelist2.get(8).toString() %></td>    
-         <td nowrap="nowrap"><%=pagelist2.get(9).toString() %></td>    
-         <td nowrap="nowrap"><%=pagelist2.get(10).toString() %></td>    
-         <td nowrap="nowrap"><%=pagelist2.get(11).toString() %></td>    
+         <td nowrap="nowrap"><%=pagelist2.get(1).toString() %></td>
+           <td nowrap="nowrap"><%=pagelist2.get(0).toString() %></td>
+       <%--         <td nowrap="nowrap"><%=pagelist2.get(2).toString() %></td>   --%>
+<%--         <td nowrap="nowrap"><%=pagelist2.get(3).toString() %></td>    --%>
+<%--         <td nowrap="nowrap"><%=pagelist2.get(4).toString() %></td>    --%>
+<%--         <td nowrap="nowrap"><%=pagelist2.get(5).toString() %></td>    --%>
+<%--         <td nowrap="nowrap"><%=pagelist2.get(6).toString() %></td>    --%>
+<%--         <td nowrap="nowrap"><%=pagelist2.get(7).toString() %></td>    --%>
+<%--         <td nowrap="nowrap"><%=pagelist2.get(8).toString() %></td>    --%>
+<%--         <td nowrap="nowrap"><%=pagelist2.get(9).toString() %></td>    --%>
+         <td nowrap="nowrap"><%=pagelist2.get(10).toString() %></td>
+<%--         <td nowrap="nowrap"><%=pagelist2.get(11).toString() %></td>    --%>
          <td nowrap="nowrap"><%=pagelist2.get(12).toString() %></td>    
          <td nowrap="nowrap"><%=pagelist2.get(13).toString() %></td>  
          <td nowrap="nowrap">
-         <a href="<%=basePath%>admin/cw/add.jsp?method=upcw&id=<%=pagelist2.get(0).toString()%>">床位调整</a> 
+         <a href="<%=basePath%>admin/cw/add.jsp?method=updateBednum&id=<%=pagelist2.get(0).toString()%>">床位调整</a>
          </td>
        </tr>
 <% }} %>

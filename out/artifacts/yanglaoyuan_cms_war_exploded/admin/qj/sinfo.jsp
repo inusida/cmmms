@@ -145,14 +145,14 @@ String message = (String)request.getAttribute("message");
        </tr>
 <%String word= Common.toChineseAndTrim(request.getParameter("word"));
 	cb.setEVERYPAGENUM(12);
-	int cou = cb.getMessageCount("select count(*) from qj where lr like '%"+word+"%' ");//得到信息总数			        
+	int cou = cb.getMessageCount("select count(*) from leave_info where name like '%"+word+"%' ");//得到信息总数
 	String page1=request.getParameter("page");
 	if(page1==null){
 		page1="1";
 	}
 	session.setAttribute("busMessageCount", cou + "");
 	session.setAttribute("busPage", page1);
-	List pagelist1 = cb.getMessage(Integer.parseInt(page1),"select * from qj where lr like '%"+word+"%'   order by id desc",4);
+	List pagelist1 = cb.getMessage(Integer.parseInt(page1),"select * from leave_info where name like '%"+word+"%'   order by id desc",4);
 	session.setAttribute("qqq", pagelist1);
 	int pageCount = cb.getPageCount(); //得到页数  
 	session.setAttribute("busPageCount", pageCount + ""); 
@@ -167,8 +167,8 @@ String message = (String)request.getAttribute("message");
          <td nowrap="nowrap"><%=pagelist2.get(2).toString() %></td>   
          <td nowrap="nowrap"><%=pagelist2.get(3).toString() %></td>  
          <td nowrap="nowrap">
-         <a href="<%=basePath%>admin/qj/add.jsp?method=upqj&id=<%=pagelist2.get(0).toString()%>">修改</a> 
-         <a href="<%=basePath%>ComServlet?method=delqj&id=<%=pagelist2.get(0).toString()%>">删除</a>
+         <a href="<%=basePath%>admin/qj/add.jsp?method=updateLeave&id=<%=pagelist2.get(0).toString()%>">修改</a>
+         <a href="<%=basePath%>ComServlet?method=deleteLeave&id=<%=pagelist2.get(0).toString()%>">删除</a>
          </td>
        </tr>
 <% }} %>

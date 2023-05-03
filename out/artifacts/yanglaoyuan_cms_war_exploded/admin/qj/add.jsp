@@ -99,13 +99,13 @@ String message = (String)request.getAttribute("message");
 	}
 	else{ 
 		String method=request.getParameter("method");  
-		String id="";String lr="";String sj="";String xx=""; 
-		if(method.equals("upqj")){
+		String id="";String name = "";String time = "";String notes="";
+		if(method.equals("updateLeave")){
 			id=request.getParameter("id");
-			List jlist = cb.get1Com("select * from qj where id='"+id+"'",4);
-			lr=jlist.get(1).toString();
-			sj=jlist.get(2).toString();  
-			xx=jlist.get(3).toString();  
+			List jlist = cb.get1Com("select * from leave_info where id='"+id+"'",4);
+			name = jlist.get(1).toString();
+			time = jlist.get(2).toString();
+			notes = jlist.get(3).toString();
 		}	  
 %>
 <body >
@@ -116,20 +116,20 @@ String message = (String)request.getAttribute("message");
 <table >
      <tr><input type="hidden" name="method" value="<%=method%>" /><input type="hidden" name="id" value="<%=id%>" />
      <td width="40%" align="right" nowrap="nowrap" >老人姓名：</td>
-     <td><select name="lr" class="select_style">
-    <%if(method.equals("upqj")){ %><option value="<%=lr%>"><%=lr%></option> <%} %> 
-    <%List flist=cb.getCom("select * from lr order by id desc",2);if(!flist.isEmpty()){for(int i=0;i<flist.size();i++){List list2=(List)flist.get(i);%>
-    <option value=<%=list2.get(1).toString() %>><%=list2.get(1).toString() %></option>
+     <td><select name="name" class="select_style">
+    <%if(method.equals("updateLeave")){ %><option value="<%=name%>"><%=name%></option> <%} %>
+    <%List flist=cb.getCom("select * from oldman_info order by id desc",11);if(!flist.isEmpty()){for(int i=0;i<flist.size();i++){List list2=(List)flist.get(i);%>
+    <option value=<%= list2.get(1).toString() + "(第" +list2.get(10).toString() + "床)"  %>><%= list2.get(1).toString() + "(第" +list2.get(10).toString() + "床)" %></option>
     <%}} %>
     </select></td> 
      </tr>
      <tr> 
      <td width="40%" align="right" nowrap="nowrap" >发生时间：</td>
-     <td><input type="date" name="sj" class="input_style" value="<%=sj %>" required/></td>
+     <td><input type="date" name="time" class="input_style" value="<%=time %>" required/></td>
      </tr>
      <tr>
      <td width="40%" align="right" nowrap="nowrap" >详细信息：</td>
-     <td><textarea name="xx" class="input_style" rows="6" required><%=xx%></textarea></td>
+     <td><textarea name="notes" class="input_style" rows="6" required><%=notes%></textarea></td>
      </tr> 
      <tr>
      	<td style="text-align: center;" colspan="2"><input type="submit" value="确定"style="width:200px; height: 30px;background-color: #f6f8fa; border: 1px solid #d0d7de;font-weight:bold;border-radius: 6px;margin-top: 20px;" /></td>

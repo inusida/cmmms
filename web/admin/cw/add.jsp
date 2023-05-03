@@ -89,7 +89,7 @@ String message = (String)request.getAttribute("message");
      <td width="40%" align="left" nowrap="nowrap" >´²Î»ºÅ£º</td>
     </tr>
     <tr>
-     <td><input type="text" name="cw" class="input_style" required/></td>
+     <td><input type="text" name="bednum" class="input_style" required/></td>
      </tr> 
      <tr> 
      <tr>

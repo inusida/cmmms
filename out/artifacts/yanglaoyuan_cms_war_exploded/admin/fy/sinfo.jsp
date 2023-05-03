@@ -144,20 +144,20 @@ String message = (String)request.getAttribute("message");
          <td nowrap="nowrap"><strong>入住费用</strong></td>
          <td nowrap="nowrap"><strong>扣除费用</strong></td>
          <td nowrap="nowrap"><strong>交费状态</strong></td>
-         <td nowrap="nowrap"><strong>详细信息</strong></td> 
-         <td nowrap="nowrap"><strong>实收</strong></td> 
+         <td nowrap="nowrap"><strong>备注</strong></td>
+           <td nowrap="nowrap"><strong>需付</strong></td>
          <td width="80" nowrap="nowrap"><strong>操作</strong></td>
        </tr>
 <%String word= Common.toChineseAndTrim(request.getParameter("word"));
 	cb.setEVERYPAGENUM(12);
-	int cou = cb.getMessageCount("select count(*) from fy where lr like '%"+word+"%' ");//得到信息总数
+	int cou = cb.getMessageCount("select count(*) from fee_info where name like '%"+word+"%' ");//得到信息总数
 	String page1=request.getParameter("page");
 	if(page1==null){
 		page1="1";
 	}
 	session.setAttribute("busMessageCount", cou + "");
 	session.setAttribute("busPage", page1);
-	List pagelist1 = cb.getMessage(Integer.parseInt(page1),"select * from fy where lr like '%"+word+"%'   order by id desc",7);
+	List pagelist1 = cb.getMessage(Integer.parseInt(page1),"select * from fee_info where name like '%"+word+"%'   order by id desc",7);
 	session.setAttribute("qqq", pagelist1);
 	int pageCount = cb.getPageCount(); //得到页数  
 	session.setAttribute("busPageCount", pageCount + ""); 
@@ -173,10 +173,10 @@ String message = (String)request.getAttribute("message");
          <td nowrap="nowrap"><%=pagelist2.get(3).toString() %></td>  
          <td nowrap="nowrap"><%=pagelist2.get(4).toString() %></td>  
          <td nowrap="nowrap"><%=pagelist2.get(5).toString() %></td>  
-         <td nowrap="nowrap"><%=pagelist2.get(6).toString() %></td>   
-         <td nowrap="nowrap">
-         <a href="<%=basePath%>admin/fy/add.jsp?method=upfy&id=<%=pagelist2.get(0).toString()%>">修改</a> 
-         <a href="<%=basePath%>ComServlet?method=delfy&id=<%=pagelist2.get(0).toString()%>">删除</a>
+         <td nowrap="nowrap"><%=pagelist2.get(6).toString() %></td>
+           <td nowrap="nowrap">
+         <a href="<%=basePath%>admin/fy/add.jsp?method=updateOldManFee&id=<%=pagelist2.get(0).toString()%>">修改</a>
+         <a href="<%=basePath%>ComServlet?method=deleteOldManFee&id=<%=pagelist2.get(0).toString()%>">删除</a>
          </td>
        </tr>
 <% }} %>
