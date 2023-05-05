@@ -23,10 +23,6 @@
         overflow:hidden;
         display: flex;
     }
-    img{
-        display: block;
-        width: 340px;
-    }
     .table{
         width: 340px;
         padding-top: 40px;
@@ -35,37 +31,34 @@
         /*padding: 20px;*/
     }
     .title-info{
-        margin: 50px 0 40px 0;
+        margin: 40px 0 30px 0;
         width: 100%;
         text-align: center;
         font-size: 24px;
         font-weight: 600;
     }
     .user-infos{
-        margin: 36px 40px;
+        margin: 30px 40px;
         font-size: 18px;
         color: #000000;
     }
     input{
-        margin-left: 12px;
         border: 0;
         outline: none;
         cursor: pointer;
-        font-size: 16px;
+        font-size: 18px;
         width: 120px;
     }
     .user-infos-item{
-        margin: 40px;
-        font-size: 16px;
+        margin: 16px 40px ;
+        font-size: 18px;
     }
-    .input{
-        /*margin: 0;*/
-        width: 10px;
-    }
+
     .btn{
-        margin:  40px auto 0 auto;
+        margin:  20px auto 0 auto;
         width:250px;
-        height:46px
+        height:46px;
+
     }
     .btn-click{
         margin: 0;
@@ -96,7 +89,8 @@
 
     <body >
 <div class="login-box">
-    <img src="./images/login-01.png"/>
+    <img style=" display: block;
+        width: 340px;" src="./images/login-01.png"/>
 <FORM name="loginform" method="post" action="<%=basePath %>AdminServlet"> 
    <table class="table">
 	  <tbody class="tbody-infos">
@@ -104,15 +98,25 @@
           系统用户登录
       </div>
       <div class="user-infos">
-          登录帐号：<input type=hidden name=method value="UserLogin"/><input type="text" size="18" name="username" required placeholder="请输入用户名"/>
+          登录帐号：
+          <input type=hidden name=method value="UserLogin"/>
+          <input type="text" size="18" name="username" required placeholder="请输入用户名"/>
       </div>
-      <div class="user-infos">登录密码：<input type="password" size="18" name="password" required placeholder="请输入密码"/>
+      <div class="user-infos">登录密码：
+          <input type="password" size="18" name="password" required placeholder="请输入密码"/>
       </div>
       <div class="user-infos-item">
           用户身份：
-          <input class="input" type="radio" name="type" value="普通管理员" > 护工
-          <input class="input" type="radio" name="type" value="系统管理员" checked> 管理员
+          <input style="width: 10px;" type="radio" name="type" value="普通管理员" > 护工
+          <input style="width: 10px;"  type="radio" name="type" value="系统管理员" checked> 管理员
       </div>
+
+      <div class="user-infos-item">
+          验证码:
+          <input style="width: 80px;"  type="text" size="18" name="code" required placeholder="验证码">
+          <img src="randomCode.jsp" width="80px" height="25px">
+      </div>
+
       <div class="btn">
           <input type="submit" class="btn-click" value="登录" />
       </div>

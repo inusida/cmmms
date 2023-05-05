@@ -60,16 +60,23 @@ public class AdminServlet extends HttpServlet {
 				String username = request.getParameter("username");
 				String password = request.getParameter("password");
 				String type = request.getParameter("type");
-				String sql="select realname from admin where username='"+username+"' and  password='"+password+"'  and  type='"+type+"';";
-				String str=cBean.getString(sql);
-				if(str==null){
-					request.setAttribute("message", "登录信息错误！");
+				String inputCode = request.getParameter("code");
+				String code = String.valueOf(session.getAttribute("RANDOMCODE"));
+				if (equalCode(code,inputCode)){
+					String sql="select realname from admin where username='"+username+"' and  password='"+password+"'  and  type='"+type+"';";
+					String str=cBean.getString(sql);
+					if(str==null){
+						request.setAttribute("message", "登录信息错误！");
+						request.getRequestDispatcher("index.jsp").forward(request, response);
+					}
+					else{
+						session.setAttribute("user", username);
+						session.setAttribute("type", type);
+						request.getRequestDispatcher("admin/index.jsp").forward(request, response);
+					}
+				}else{
+					request.setAttribute("message", "验证码错误！");
 					request.getRequestDispatcher("index.jsp").forward(request, response);
-				}
-				else{
-					session.setAttribute("user", username);
-					session.setAttribute("type", type);
-					request.getRequestDispatcher("admin/index.jsp").forward(request, response);
 				}
 			}
 			else if(method.equals("uppwd")){//修改密码
@@ -162,6 +169,17 @@ public class AdminServlet extends HttpServlet {
 			request.getRequestDispatcher("error.jsp").forward(request, response);
 		}
 
+	}
+
+	public boolean equalCode(String s1,String s2){
+		String slc1 = s1.toLowerCase();
+		String slc2 = s2.toLowerCase();
+		String suc1 = s1.toUpperCase();
+		String suc2 = s2.toUpperCase();
+		if(slc1.equals(slc2)  ||suc1.equals(suc2)){
+			return true;
+		}
+		return false;
 	}
 
 	/**
