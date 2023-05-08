@@ -110,11 +110,15 @@ String message = (String)request.getAttribute("message");
      </tr>
      <tr>
      <td width="40%" align="left" nowrap="nowrap" >性别：</td>
-     <td><input type="radio" name="sex" value="男" checked="checked"/> 男 <input type="radio" name="xb" value="女"/> 女</td>
+     <td>
+         <input type="radio" name="sex" value="男" checked/> 男
+         <input type="radio" name="sex" value="女"/> 女
+     </td>
      </tr>
      <tr>
      <td width="40%" align="left" nowrap="nowrap" >年龄：</td>
-     <td><input type="number" name="age" class="input_style" value="<%=age %>" required/></td>
+     <td><input type="number" name="age" class="input_style" value="<%=age %>" required/>
+     </td>
      </tr>
      <tr>
      <td width="40%" align="left" nowrap="nowrap" >身体状况：</td>
@@ -138,8 +142,8 @@ String message = (String)request.getAttribute("message");
      </tr> 
      <tr>
      <td width="40%" align="left" nowrap="nowrap" >家庭住址：</td>
-     <td><input type="text" name="address" class="input_style" value="<%=address %>" required/></td>
-     </tr> 
+     <td><input type="text" name="address" class="input_style" value="<%=address %>" required /></td>
+     </tr>
      <tr>
      <td width="40%" align="left" nowrap="nowrap" >床位号：</td>
      <td><input type="text" name="bednum" class="input_style" value="<%=bednum %>" required/></td>
@@ -164,7 +168,7 @@ String message = (String)request.getAttribute("message");
      <tr>
      	<td style="text-align: center;"   colspan="2"><input type="submit" value="确定" style="width:200px; height: 30px;background-color: #f6f8fa; border: 1px solid #d0d7de;font-weight:bold;border-radius: 6px;margin-top: 20px;" /></td>
      </tr>
-     </table> 
+     </table>
 </form>
    </div>  
  </div>  
