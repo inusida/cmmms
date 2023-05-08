@@ -161,11 +161,11 @@ String message = (String)request.getAttribute("message");
 	session.setAttribute("busPageCount", pageCount + ""); 
 	List pagelist3=(ArrayList)session.getAttribute("qqq");
 		if(!pagelist3.isEmpty()){
-		for(int i=0;i<pagelist3.size();i++){
+		for(int i = pagelist3.size() - 1;i >= 0;i--){
 			List pagelist2 =(ArrayList)pagelist3.get(i);
 %>       
        <tr align="center" style="height: 50px;" width="100">
-         <td nowrap="nowrap"><%=i+1 %></td>
+         <td nowrap="nowrap"><%=pagelist2.get(0).toString()%></td>
          <td nowrap="nowrap"><%=pagelist2.get(1).toString() %></td> 
          <td nowrap="nowrap"><%=pagelist2.get(3).toString() %></td>
          <td nowrap="nowrap"><%=pagelist2.get(4).toString() %></td>
