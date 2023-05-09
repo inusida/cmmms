@@ -107,8 +107,8 @@
       </div>
       <div class="user-infos-item">
           用户身份：
-          <input style="width: 10px;" type="radio" name="type" value="普通管理员" > 护工
-          <input style="width: 10px;"  type="radio" name="type" value="系统管理员" checked> 管理员
+          <input style="width: 10px;" type="radio" name="admin_type" value="普通管理员" > 护工
+          <input style="width: 10px;"  type="radio" name="admin_type" value="系统管理员" checked> 管理员
       </div>
 
       <div class="user-infos-item">

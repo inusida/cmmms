@@ -139,9 +139,9 @@ String message = (String)request.getAttribute("message");
        <tr align="center" style="height: 50px">
          <td nowrap="nowrap"><strong>序号</strong></td>
          <td nowrap="nowrap"><strong>登录帐号</strong></td>
-         <td nowrap="nowrap"><strong>用户姓名</strong></td>
-         <td nowrap="nowrap"><strong>用户性别</strong></td>
-         <td><strong>用户年龄</strong></td>
+         <td nowrap="nowrap"><strong>真实姓名</strong></td>
+         <td nowrap="nowrap"><strong>   性别</strong></td>
+         <td><strong>   年龄</strong></td>
          <td><strong>联系电话</strong></td>
          <td><strong>联系地址</strong></td>
          <td><strong>创建时间</strong></td> 

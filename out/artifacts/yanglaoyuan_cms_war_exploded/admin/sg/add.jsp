@@ -94,7 +94,7 @@ List flist = null;
 	request.removeAttribute("message"); 
 	
 	String username=(String)session.getAttribute("user");
-	String type=(String)session.getAttribute("type");
+	String admin_type=(String)session.getAttribute("admin_type");
 	if(username==null){
 		response.sendRedirect(path+"index.jsp");
 	}
@@ -119,10 +119,10 @@ List flist = null;
      <td width="40%" align="right" nowrap="nowrap">老人姓名：</td>
      <td><select name="name" class="select_style">
     <%if(method.equals("updateAccident")){ %><option value="<%=name%>"><%=name%></option> <%} %>
-    <%if(type.equals("系统管理员")){
-        flist=cb.getCom("select * from lr order by id desc",2);
+    <%if(admin_type.equals("系统管理员")){
+        flist=cb.getCom("select * from elderly_info order by id desc",2);
     }else{
-        flist=cb.getCom("select * from lr where hg = '"+username+"' order by id desc",2);
+        flist=cb.getCom("select * from elderly_info where hg = '"+username+"' order by id desc",2);
     }
     if(!flist.isEmpty()){for(int i=0;i<flist.size();i++){List list2=(List)flist.get(i);%>
     <option value=<%=list2.get(1).toString() %>><%=list2.get(1).toString() %></option>

@@ -123,7 +123,8 @@ String message = (String)request.getAttribute("message");
 	}
 	request.removeAttribute("message"); 
 	
-	String username=(String)session.getAttribute("user");String type=(String)session.getAttribute("type");
+	String username=(String)session.getAttribute("user");
+	int caregiver_id=(int)session.getAttribute("caregiver_id");
 	if(username==null){
 		response.sendRedirect(path+"index.jsp");
 	}
@@ -155,14 +156,14 @@ String message = (String)request.getAttribute("message");
        </tr>
 <%String word= Common.toChineseAndTrim(request.getParameter("word"));
 	cb.setEVERYPAGENUM(12);
-	int cou = cb.getMessageCount("select count(*) from lr where nursingworker = '"+username+"' ");//得到信息总数
+	int cou = cb.getMessageCount("select count(*) from elderly_info where caregiver_id = "+caregiver_id+" ");//得到信息总数
 	String page1=request.getParameter("page");
 	if(page1==null){
 		page1="1";
 	}
 	session.setAttribute("busMessageCount", cou + "");
 	session.setAttribute("busPage", page1);
-	List pagelist1 = cb.getMessage(Integer.parseInt(page1),"select * from lr where nursingworker = '"+username+"'   order by id desc",14);
+	List pagelist1 = cb.getMessage(Integer.parseInt(page1),"select * from elderly_info where caregiver_id = "+caregiver_id+"   order by id desc",14);
 	session.setAttribute("qqq", pagelist1);
 	int pageCount = cb.getPageCount(); //得到页数  
 	session.setAttribute("busPageCount", pageCount + ""); 

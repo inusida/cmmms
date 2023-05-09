@@ -122,7 +122,7 @@ String message = (String)request.getAttribute("message");
 	}
 	request.removeAttribute("message"); 
 	
-	String username=(String)session.getAttribute("user"); String type=(String)session.getAttribute("type");
+	String username=(String)session.getAttribute("user");
 	if(username==null){
 		response.sendRedirect(path+"index.jsp");
 	}
@@ -172,9 +172,9 @@ String message = (String)request.getAttribute("message");
          <td nowrap="nowrap"><%=pagelist2.get(4).toString() %></td>  
          <td nowrap="nowrap"><%=pagelist2.get(5).toString() %></td>  
          <td nowrap="nowrap"><%=pagelist2.get(6).toString() %></td>
-           <td nowrap="nowrap" style="display: flex;align-items: center; padding: 10px">
-         <a style="text-decoration: none; width: 50px; height: 30px;background: #FFFFFF;color: #000000;border: 1px solid #333333;display: block; text-align: center; line-height: 30px; border-radius: 5px; margin-right: 10px" href="<%=basePath%>admin/fy/add.jsp?method=updateOldManFee&id=<%=pagelist2.get(0).toString()%>">ÐÞ¸Ä</a>
-         <a style="text-decoration: none; width: 50px; height: 30px;background: rgb(241,18,18);color: #FFFFFF;border: 1px solid #333333;display: block; text-align: center; line-height: 30px; border-radius: 5px"  href="<%=basePath%>ComServlet?method=deleteOldManFee&id=<%=pagelist2.get(0).toString()%>">É¾³ý</a>
+           <td nowrap="nowrap" style="display: flex;align-items: center; padding: 10px;justify-content: center">
+         <a style="text-decoration: none; width: 80px; height: 30px;background: #FFFFFF;color: #000000;border: 1px solid #333333;display: block; text-align: center; line-height: 30px; border-radius: 5px; margin-right: 10px" href="<%=basePath%>admin/fy/add.jsp?method=updateOldManFee&id=<%=pagelist2.get(0).toString()%>">ÐÞ¸Ä</a>
+         <a style="text-decoration: none; width: 80px; height: 30px;background: rgb(241,18,18);color: #FFFFFF;border: 1px solid #333333;display: block; text-align: center; line-height: 30px; border-radius: 5px"  href="<%=basePath%>ComServlet?method=deleteOldManFee&id=<%=pagelist2.get(0).toString()%>">É¾³ý</a>
          </td>
        </tr>
 <% }} %>
