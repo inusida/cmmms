@@ -121,7 +121,9 @@ String message = (String)request.getAttribute("message");
 	}
 	request.removeAttribute("message"); 
 	
-	String username=(String)session.getAttribute("user"); String type=(String)session.getAttribute("type");
+	String username=(String)session.getAttribute("user");
+	int caregiver_id = (int)session.getAttribute("caregiver_id");
+	String admin_type=(String)session.getAttribute("admin_type");
 	if(username==null){
 		response.sendRedirect(path+"index.jsp");
 	}
@@ -157,10 +159,10 @@ String message = (String)request.getAttribute("message");
 <%   
 	cb.setEVERYPAGENUM(12);
 	int cou = 0;
-    if (type.equals("系统管理员")){
-        cou = cb.getMessageCount("select count(*) from oldman_info ");//得到信息总数
+    if (admin_type.equals("系统管理员")){
+        cou = cb.getMessageCount("select count(*) from elderly_info ");//得到信息总数
     }else{
-        cou = cb.getMessageCount("select count(*) from oldman_info where nursingworker = '"+username+"'");//得到信息总数
+        cou = cb.getMessageCount("select count(*) from elderly_info where caregiver_id = "+caregiver_id+"");//得到信息总数
     }
 	String page1=request.getParameter("page");
 	if(page1==null){
@@ -168,11 +170,11 @@ String message = (String)request.getAttribute("message");
 	}
 	session.setAttribute("busMessageCount", cou + "");
 	session.setAttribute("busPage", page1);
-	if (type.equals("系统管理员")){
-	    pagelist1 = cb.getMessage(Integer.parseInt(page1),"select * from oldman_info order by id desc",14);
+	if (admin_type.equals("系统管理员")){
+	    pagelist1 = cb.getMessage(Integer.parseInt(page1),"select * from elderly_info order by id desc",14);
 
     }else{
-        pagelist1 = cb.getMessage(Integer.parseInt(page1),"select * from oldman_info where nursingworker = '"+username+"'order by id desc",14);
+        pagelist1 = cb.getMessage(Integer.parseInt(page1),"select * from elderly_info where caregiver_id = "+caregiver_id+"order by id desc",14);
     }
 	session.setAttribute("qqq", pagelist1);
 	int pageCount = cb.getPageCount(); //得到页数  
@@ -198,8 +200,8 @@ String message = (String)request.getAttribute("message");
 <%--         <td nowrap="nowrap"><%=pagelist2.get(11).toString() %></td>    --%>
          <td nowrap="nowrap"><%=pagelist2.get(12).toString() %></td>    
          <td nowrap="nowrap"><%=pagelist2.get(13).toString() %></td>  
-         <td nowrap="nowrap" style="display: flex;align-items: center; padding: 10px">
-         <a style="text-decoration: none; width: 80px; height: 30px;background: #FFFFFF;color: #000000;border: 1px solid #333333;display: block; text-align: center; line-height: 30px; border-radius: 5px; margin-right: 10px" href="<%=basePath%>admin/cw/add.jsp?method=updateBednum&id=<%=pagelist2.get(0).toString()%>">床位调整</a>
+         <td nowrap="nowrap" style="display: flex;align-items: center; padding: 10px;justify-content: center">
+         <a style="text-decoration: none; width: 120px; height: 30px;background: #FFFFFF;color: #000000;border: 1px solid #333333;display: block; text-align: center; line-height: 30px; border-radius: 5px; margin-right: 10px" href="<%=basePath%>admin/cw/add.jsp?method=updatebed_no&id=<%=pagelist2.get(0).toString()%>">床位调整</a>
          </td>
        </tr>
 <% }} %>

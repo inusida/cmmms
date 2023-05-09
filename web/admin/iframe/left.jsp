@@ -104,7 +104,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <%
 	String username=(String)session.getAttribute("user");
-	String type=(String)session.getAttribute("type");
+	String admin_type=(String)session.getAttribute("admin_type");
 	if(username==null){
 		response.sendRedirect(path+"index.jsp");
 	}
@@ -135,8 +135,7 @@ window.onload = function() {
 		</div>
 	</li>
 
-
-	<%if(type.equals("系统管理员")){ %>
+	<%if(admin_type.equals("系统管理员")){ %>
 	<li style="display: flex; margin-left: 10px; margin-bottom: 20px">
 		<img src="<%=basePath%>images/img/icon_user.png" height="30px" width="30px">
 		<div class="collapsed">

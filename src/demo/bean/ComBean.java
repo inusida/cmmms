@@ -151,6 +151,26 @@ public class ComBean {
 			dbo.close();
 		}
 	}
+	public int getInt(String sql){
+		System.out.printf(sql);
+		DBO dbo = new DBO();
+		list = new ArrayList();
+		dbo.open();
+		try{
+			rs = dbo.executeQuery(sql);
+			if(rs.next()){
+				return rs.getInt(1);
+			}
+			else return 0;
+		}catch(Exception e){
+			e.printStackTrace();
+			return 0;
+		}finally{
+			dbo.close();
+		}
+	}
+
+
 	public int getCount(String sql){
 		DBO dbo = new DBO();
 		dbo.open();

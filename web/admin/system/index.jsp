@@ -138,9 +138,9 @@ String message = (String)request.getAttribute("message");
        <tr align=center style="height: 50px">
          <td nowrap="nowrap">序号</td>
          <td nowrap="nowrap">登录帐号</td>
-         <td nowrap="nowrap">用户姓名</td>
-         <td nowrap="nowrap">用户性别</td>
-         <td>用户年龄</td>
+         <td nowrap="nowrap">真实姓名</td>
+         <td nowrap="nowrap">   性别</td>
+         <td>   年龄</td>
          <td>联系电话</td>
          <td>联系地址</td>
          <td>创建时间</td>
@@ -173,9 +173,9 @@ String message = (String)request.getAttribute("message");
          <td nowrap="nowrap"><%=pagelist2.get(7).toString() %></td>
          <td nowrap="nowrap"><%=pagelist2.get(6).toString() %></td>
          <td nowrap="nowrap"><%=pagelist2.get(8).toString() %></td>  
-         <td nowrap="nowrap" style="display: flex;align-items: center; padding: 10px">
-             <a style="text-decoration: none; width: 50px; height: 30px;background: #FFFFFF;color: #000000;border: 1px solid #333333;display: block; text-align: center; line-height: 30px; border-radius: 5px; margin-right: 10px" href="<%=basePath%>admin/system/add.jsp?method=updateAdmin&id=<%=pagelist2.get(0).toString()%>">编辑</a>
-         <a style="text-decoration: none; width: 50px; height: 30px;background: rgb(241,18,18);color: #FFFFFF;border: 1px solid #333333;display: block; text-align: center; line-height: 30px; border-radius: 5px" href="<%=basePath%>AdminServlet?method=deleteAdmin&id=<%=pagelist2.get(0).toString()%>">删除</a></td>
+         <td nowrap="nowrap" style="display: flex;align-items: center; padding: 10px;justify-content: center">
+             <a style="text-decoration: none; width: 80px; height: 30px;background: #FFFFFF;color: #000000;border: 1px solid #333333;display: block; text-align: center; line-height: 30px; border-radius: 5px; margin-right: 10px" href="<%=basePath%>admin/system/add.jsp?method=updateAdmin&id=<%=pagelist2.get(0).toString()%>">编辑</a>
+         <a style="text-decoration: none; width: 80px; height: 30px;background: rgb(241,18,18);color: #FFFFFF;border: 1px solid #333333;display: block; text-align: center; line-height: 30px; border-radius: 5px" href="<%=basePath%>AdminServlet?method=deleteAdmin&id=<%=pagelist2.get(0).toString()%>">删除</a></td>
        </tr>
 <% }} %>
        <tr align="center" style="height: 40px">

@@ -123,7 +123,9 @@ String message = (String)request.getAttribute("message");
 	}
 	request.removeAttribute("message"); 
 	
-	String username=(String)session.getAttribute("user");String type=(String)session.getAttribute("type");
+	String username=(String)session.getAttribute("user");
+	int caregiver_id = (int)session.getAttribute("caregiver_id");
+	String type=(String)session.getAttribute("admin_type");
 	if(username==null){
 		response.sendRedirect(path+"index.jsp");
 	}
@@ -159,9 +161,9 @@ String message = (String)request.getAttribute("message");
 	cb.setEVERYPAGENUM(12);
 	int cou = 0;
     if (type.equals("系统管理员")){
-        cou = cb.getMessageCount("select count(*) from oldman_info where bednum like '%"+word+"%' ");//得到信息总数
+        cou = cb.getMessageCount("select count(*) from elderly_info where bed_no like '%"+word+"%' ");//得到信息总数
     }else{
-        cou = cb.getMessageCount("select count(*) from oldman_info where bednum like '%"+word+"%' nursingworker = '" + username+"'" );//得到信息总数
+        cou = cb.getMessageCount("select count(*) from elderly_info where bed_no like '%"+word+"%' caregiver_id = " + caregiver_id+"" );//得到信息总数
     }
 	String page1=request.getParameter("page");
 	if(page1==null){
@@ -171,9 +173,9 @@ String message = (String)request.getAttribute("message");
 	session.setAttribute("busPage", page1);
 	List pagelist1;
 	if (type.equals("系统管理员")){
-        pagelist1 = cb.getMessage(Integer.parseInt(page1),"select * from oldman_info where bednum like '%"+word+"%'   order by id desc",14);
+        pagelist1 = cb.getMessage(Integer.parseInt(page1),"select * from elderly_info where bed_no like '%"+word+"%'   order by id desc",14);
     }else{
-        pagelist1 = cb.getMessage(Integer.parseInt(page1),"select * from oldman_info where bednum like '%"+word+"%' and nursingworker = '"+username+"'  order by id desc",14);
+        pagelist1 = cb.getMessage(Integer.parseInt(page1),"select * from elderly_info where bed_no like '%"+word+"%' and caregiver_id = "+caregiver_id+"  order by id desc",14);
     }
 	session.setAttribute("qqq", pagelist1);
 	int pageCount = cb.getPageCount(); //得到页数  
@@ -200,7 +202,7 @@ String message = (String)request.getAttribute("message");
          <td nowrap="nowrap"><%=pagelist2.get(12).toString() %></td>    
          <td nowrap="nowrap"><%=pagelist2.get(13).toString() %></td>  
          <td nowrap="nowrap">
-         <a href="<%=basePath%>admin/cw/add.jsp?method=updateBednum&id=<%=pagelist2.get(0).toString()%>">床位调整</a>
+         <a href="<%=basePath%>admin/cw/add.jsp?method=updatebed_no&id=<%=pagelist2.get(0).toString()%>">床位调整</a>
          </td>
        </tr>
 <% }} %>

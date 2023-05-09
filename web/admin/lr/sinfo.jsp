@@ -123,7 +123,9 @@ String message = (String)request.getAttribute("message");
 	}
 	request.removeAttribute("message"); 
 	
-	String username=(String)session.getAttribute("user");String type=(String)session.getAttribute("type");
+	String username=(String)session.getAttribute("user");
+	int caregiver_id = (int)session.getAttribute("caregiver_id");
+	String admin_type=(String)session.getAttribute("admin_type");
 	if(username==null){
 		response.sendRedirect(path+"index.jsp");
 	}
@@ -157,10 +159,10 @@ String message = (String)request.getAttribute("message");
 <%String word= Common.toChineseAndTrim(request.getParameter("word"));
 	cb.setEVERYPAGENUM(12);
 	int cou = 0;
-	if (type.equals("系统管理员")){
-        cou = cb.getMessageCount("select count(*) from oldman_info where name like '%"+word+"%' ");//得到信息总数
+	if (admin_type.equals("系统管理员")){
+        cou = cb.getMessageCount("select count(*) from elderly_info where name like '%"+word+"%' ");//得到信息总数
     }else{
-        cou = cb.getMessageCount("select count(*) from oldman_info where name like '%"+word+"%' and  nursingworker = "+username);//得到信息总数
+        cou = cb.getMessageCount("select count(*) from elderly_info where name like '%"+word+"%' and  caregiver_id = "+caregiver_id);//得到信息总数
 
     }
 	String page1=request.getParameter("page");
@@ -170,10 +172,10 @@ String message = (String)request.getAttribute("message");
 	session.setAttribute("busMessageCount", cou + "");
 	session.setAttribute("busPage", page1);
 	List pagelist1 = null;
-	if (type.equals("系统管理员")){
-        pagelist1 = cb.getMessage(Integer.parseInt(page1),"select * from oldman_info where name like '%"+word+"%'   order by id desc",14);
+	if (admin_type.equals("系统管理员")){
+        pagelist1 = cb.getMessage(Integer.parseInt(page1),"select * from elderly_info where name like '%"+word+"%'   order by id desc",14);
     }else{
-        pagelist1 = cb.getMessage(Integer.parseInt(page1),"select * from oldman_info where name like '%"+word+"%'  and nursingworker = '"+username+"'  order by id desc",14);
+        pagelist1 = cb.getMessage(Integer.parseInt(page1),"select * from elderly_info where name like '%"+word+"%'  and caregiver_id = "+caregiver_id+"  order by id desc",14);
     }
 	session.setAttribute("qqq", pagelist1);
 	int pageCount = cb.getPageCount(); //得到页数  

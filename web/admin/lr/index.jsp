@@ -122,7 +122,9 @@ String message = (String)request.getAttribute("message");
 	}
 	request.removeAttribute("message"); 
 	
-	String username=(String)session.getAttribute("user"); String type=(String)session.getAttribute("type");
+	String username=(String)session.getAttribute("user");
+	String admin_type=(String)session.getAttribute("admin_type");
+	int caregiver_id = (int)session.getAttribute("caregiver_id");
 	if(username==null){
 		response.sendRedirect(path+"index.jsp");
 	}
@@ -155,10 +157,10 @@ String message = (String)request.getAttribute("message");
        </tr>
 <%   
 	cb.setEVERYPAGENUM(12);
-	if (type.equals("系统管理员")){
-        cou = cb.getMessageCount("select count(*) from oldman_info ");//得到信息总数
+	if (admin_type.equals("系统管理员")){
+        cou = cb.getMessageCount("select count(*) from elderly_info ");//得到信息总数
     }else{
-	    cou = cb.getMessageCount("select count(*) from oldman_info where nursingworker = '"+username+"' ");//得到信息总数
+	    cou = cb.getMessageCount("select count(*) from elderly_info where caregiver_id = "+caregiver_id+" ");//得到信息总数
     }
 	String page1=request.getParameter("page");
 	if(page1==null){
@@ -166,10 +168,10 @@ String message = (String)request.getAttribute("message");
 	}
 	session.setAttribute("busMessageCount", cou + "");
 	session.setAttribute("busPage", page1);
-	if (type.equals("系统管理员")){
-        pagelist1 = cb.getMessage(Integer.parseInt(page1),"select * from oldman_info order by id desc",14);
+	if (admin_type.equals("系统管理员")){
+        pagelist1 = cb.getMessage(Integer.parseInt(page1),"select * from elderly_info order by id desc",14);
     }else{
-	    pagelist1 = cb.getMessage(Integer.parseInt(page1),"select * from oldman_info where nursingworker = '"+username+"'   order by id desc",14);
+	    pagelist1 = cb.getMessage(Integer.parseInt(page1),"select * from elderly_info where caregiver_id = "+caregiver_id+"  order by id desc",14);
 
     }
 	session.setAttribute("qqq", pagelist1);

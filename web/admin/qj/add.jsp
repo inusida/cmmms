@@ -118,7 +118,7 @@ String message = (String)request.getAttribute("message");
      <td width="40%" align="right" nowrap="nowrap" >老人姓名：</td>
      <td><select name="name" class="select_style">
     <%if(method.equals("updateLeave")){ %><option value="<%=name%>"><%=name%></option> <%} %>
-    <%List flist=cb.getCom("select * from oldman_info order by id desc",11);if(!flist.isEmpty()){for(int i=0;i<flist.size();i++){List list2=(List)flist.get(i);%>
+    <%List flist=cb.getCom("select * from elderly_info order by id desc",11);if(!flist.isEmpty()){for(int i=0;i<flist.size();i++){List list2=(List)flist.get(i);%>
     <option value=<%= list2.get(1).toString() + "(第" +list2.get(10).toString() + "床)"  %>><%= list2.get(1).toString() + "(第" +list2.get(10).toString() + "床)" %></option>
     <%}} %>
     </select></td> 

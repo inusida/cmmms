@@ -41,21 +41,21 @@ public class ComServlet extends HttpServlet {
 			String name = request.getParameter("name");
 			String sex = request.getParameter("sex");
 			String age = request.getParameter("age");
-			String conditions = request.getParameter("conditions");
-			String register = request.getParameter("register");
-			String idcard = request.getParameter("idcard");
-			String linkman = request.getParameter("linkman");
+			String health_status = request.getParameter("health_status");
+			String household_register = request.getParameter("household_register");
+			String id_card = request.getParameter("id_card");
+			String contact_person = request.getParameter("contact_person");
 			String tel = request.getParameter("tel");
 			String address = request.getParameter("address");
-			String bednum = request.getParameter("bednum");
-			String nursingworker = request.getParameter("nursingworker");
+			String bed_no = request.getParameter("bed_no");
+			String caregiver_id = request.getParameter("caregiver_id");
 			String startTime = request.getParameter("startTime");
 			String endTime = request.getParameter("endTime");
-			String str_idcard = cBean.getString("select id from oldman_info where idcard='"+idcard+"'");
-			String str_bednum = cBean.getString("select id from oldman_info where bednum='"+bednum+"'");
-			if (str_idcard == null && str_bednum == null){
-				int flag = cBean.comUp("insert into oldman_info(name,sex,age,conditions,register,idcard,linkman,tel,address,bednum,nursingworker,startTime,endTime)  " +
-						"values('"+name+"','"+sex+"','"+age+"','"+conditions+"','"+register+"','"+idcard+"','"+linkman+"','"+tel+"','"+address+"','"+bednum+"','"+nursingworker+"','"+startTime+"','"+endTime+"' )");
+			String str_id_card = cBean.getString("select id from elderly_info where id_card='"+id_card+"'");
+			String str_bed_no = cBean.getString("select id from elderly_info where bed_no="+bed_no+"");
+			if (str_id_card == null && str_bed_no == null){
+				int flag = cBean.comUp("insert into elderly_info(name,sex,age,health_status,household_register,id_card,contact_person,tel,address,bed_no,caregiver_id,startTime,endTime)  " +
+						"values('"+name+"','"+sex+"',"+age+",'"+health_status+"','"+household_register+"','"+id_card+"','"+contact_person+"','"+tel+"','"+address+"',"+bed_no+","+caregiver_id+",'"+startTime+"','"+endTime+"' )");
 				if(flag == Constant.SUCCESS){
 					request.setAttribute("message", "添加成功！");
 					request.getRequestDispatcher("admin/lr/index.jsp").forward(request, response);
@@ -64,7 +64,7 @@ public class ComServlet extends HttpServlet {
 					request.setAttribute("message", "添加失败！");
 					request.getRequestDispatcher("admin/lr/index.jsp").forward(request, response);
 				}
-			}else if(str_idcard != null){
+			}else if(str_id_card != null){
 				request.setAttribute("message", "该老人已存在！");
 				request.getRequestDispatcher("admin/lr/index.jsp").forward(request, response);
 			}else{
@@ -77,21 +77,21 @@ public class ComServlet extends HttpServlet {
 			String name = request.getParameter("name");
 			String sex = request.getParameter("sex");
 			String age = request.getParameter("age");
-			String conditions = request.getParameter("conditions");
-			String register = request.getParameter("register");
-			String idcard = request.getParameter("idcard");
-			String linkman = request.getParameter("linkman");
+			String health_status = request.getParameter("health_status");
+			String household_register = request.getParameter("household_register");
+			String id_card = request.getParameter("id_card");
+			String contact_person = request.getParameter("contact_person");
 			String tel = request.getParameter("tel");
 			String address = request.getParameter("address");
-			String bednum = request.getParameter("bednum");
-			String nursingworker = request.getParameter("nursingworker");
+			String bed_no = request.getParameter("bed_no");
+			String caregiver_id = request.getParameter("caregiver_id");
 			String startTime = request.getParameter("startTime");
 			String endTime = request.getParameter("endTime");
-			String str_idcard = cBean.getString("select id from oldman_info where idcard='"+idcard+"'");
-			String str_bednum = cBean.getString("select id from oldman_info where bednum='"+bednum+"'");
-			if (str_idcard == null && str_bednum == null){
-				int flag = cBean.comUp("update oldman_info set name='"+name+"',sex='"+sex+"',age='"+age+"',conditions='"+conditions+"',register='"+register+"',idcard='"+idcard+"'" +
-						",linkman='"+linkman+"',tel='"+tel+"',address='"+address+"',bednum='"+bednum+"',nursingworker='"+nursingworker+"',startTime='"+startTime+"',endTime='"+endTime+"' where id='"+id+"'");
+			String str_id_card = cBean.getString("select id from elderly_info where id_card='"+id_card+"'");
+			String str_bed_no = cBean.getString("select id from elderly_info where bed_no="+bed_no+"");
+			if (str_id_card == null && str_bed_no == null){
+				int flag = cBean.comUp("update elderly_info set name='"+name+"',sex='"+sex+"',age="+age+",health_status='"+health_status+"',household_register='"+household_register+"',id_card='"+id_card+"'" +
+						",contact_person='"+contact_person+"',tel='"+tel+"',address='"+address+"',bed_no="+bed_no+",caregiver_id="+caregiver_id+",startTime='"+startTime+"',endTime='"+endTime+"' where id='"+id+"'");
 				if(flag == Constant.SUCCESS){
 					request.setAttribute("message", "修改成功！");
 					request.getRequestDispatcher("admin/lr/index.jsp").forward(request, response);
@@ -100,7 +100,7 @@ public class ComServlet extends HttpServlet {
 					request.setAttribute("message", "修改失败！");
 					request.getRequestDispatcher("admin/lr/index.jsp").forward(request, response);
 				}
-			}else if(str_idcard != null){
+			}else if(str_id_card != null){
 				request.setAttribute("message", "该老人已存在！");
 				request.getRequestDispatcher("admin/lr/index.jsp").forward(request, response);
 			}else{
@@ -110,7 +110,7 @@ public class ComServlet extends HttpServlet {
 		}
 		else if(method.equals("deleteOldman")){//删除老人信息
 			String id = request.getParameter("id");
-			int flag = cBean.comUp("delete from oldman_info where id='"+id+"'");
+			int flag = cBean.comUp("delete from elderly_info where id='"+id+"'");
 			if(flag == Constant.SUCCESS){
 				request.setAttribute("message", "删除成功！");
 				request.getRequestDispatcher("admin/lr/index.jsp").forward(request, response);
@@ -204,10 +204,10 @@ public class ComServlet extends HttpServlet {
 				request.getRequestDispatcher("admin/qj/index.jsp").forward(request, response);
 			}
 		}
-		else if(method.equals("updateBednum")){
+		else if(method.equals("updatebed_no")){
 			String id=request.getParameter("id");
-			String bednum = request.getParameter("bednum");
-			int flag = cBean.comUp("update oldman_info set bednum ='"+bednum+"'  where id='"+id+"'");
+			String bed_no = request.getParameter("bed_no");
+			int flag = cBean.comUp("update elderly_info set bed_no ="+bed_no+"  where id='"+id+"'");
 			if(flag == Constant.SUCCESS){
 				request.setAttribute("message", "修改成功！");
 				request.getRequestDispatcher("admin/cw/index.jsp").forward(request, response);

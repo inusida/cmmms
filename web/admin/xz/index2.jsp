@@ -120,7 +120,7 @@ String message = (String)request.getAttribute("message");
 	}
 	request.removeAttribute("message"); 
 	
-	String username=(String)session.getAttribute("user"); String type=(String)session.getAttribute("type");
+	String username=(String)session.getAttribute("user");
 	if(username==null){
 		response.sendRedirect(path+"index.jsp");
 	}

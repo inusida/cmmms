@@ -122,7 +122,8 @@ String message = (String)request.getAttribute("message");
 	}
 	request.removeAttribute("message"); 
 	
-	String username=(String)session.getAttribute("user"); String type=(String)session.getAttribute("type");
+	String username=(String)session.getAttribute("user");
+	String admin_type=(String)session.getAttribute("admin_type");
 	if(username==null){
 		response.sendRedirect(path+"index.jsp");
 	}
@@ -149,7 +150,7 @@ String message = (String)request.getAttribute("message");
        </tr>
 <%   
 	cb.setEVERYPAGENUM(12);
-	if (type.equals("系统管理员")){
+	if (admin_type.equals("系统管理员")){
         cou = cb.getMessageCount("select count(*) from salary_info ");//得到信息总数
     }else{
         cou = cb.getMessageCount("select count(*) from salary_info where name='"+username+"'");//得到信息总数
@@ -161,7 +162,7 @@ String message = (String)request.getAttribute("message");
 	}
 	session.setAttribute("busMessageCount", cou + "");
 	session.setAttribute("busPage", page1);
-	if (type.equals("系统管理员")){
+	if (admin_type.equals("系统管理员")){
         pagelist1 = cb.getMessage(Integer.parseInt(page1),"select * from salary_info order by id desc",8);
     }else{
 	    pagelist1 = cb.getMessage(Integer.parseInt(page1),"select * from salary_info where name ='"+username+"' order by id desc",8);
@@ -183,9 +184,9 @@ String message = (String)request.getAttribute("message");
          <td nowrap="nowrap"><%=pagelist2.get(3).toString() %></td>
          <td nowrap="nowrap"><%=pagelist2.get(4).toString() %></td>
            <td nowrap="nowrap"><%=pagelist2.get(7).toString() %></td>
-           <td nowrap="nowrap" style="display: flex;align-items: center; padding: 10px">
-         <a style="text-decoration: none; width: 50px; height: 30px;background: #FFFFFF;color: #000000;border: 1px solid #333333;display: block; text-align: center; line-height: 30px; border-radius: 5px; margin-right: 10px" href="<%=basePath%>admin/xz/add.jsp?method=updateSalary&id=<%=pagelist2.get(0).toString()%>">修改</a>
-         <a style="text-decoration: none; width: 50px; height: 30px;background: rgb(241,18,18);color: #FFFFFF;border: 1px solid #333333;display: block; text-align: center; line-height: 30px; border-radius: 5px" href="<%=basePath%>ComServlet?method=deleteSalary&id=<%=pagelist2.get(0).toString()%>">删除</a>
+           <td nowrap="nowrap" style="display: flex;align-items: center; padding: 10px;justify-content: center">
+         <a style="text-decoration: none; width: 80px; height: 30px;background: #FFFFFF;color: #000000;border: 1px solid #333333;display: block; text-align: center; line-height: 30px; border-radius: 5px; margin-right: 10px" href="<%=basePath%>admin/xz/add.jsp?method=updateSalary&id=<%=pagelist2.get(0).toString()%>">修改</a>
+         <a style="text-decoration: none; width: 80px; height: 30px;background: rgb(241,18,18);color: #FFFFFF;border: 1px solid #333333;display: block; text-align: center; line-height: 30px; border-radius: 5px" href="<%=basePath%>ComServlet?method=deleteSalary&id=<%=pagelist2.get(0).toString()%>">删除</a>
          </td>
        </tr>
 <% }} %>

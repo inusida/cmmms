@@ -64,17 +64,17 @@ String message = (String)request.getAttribute("message");
 	else{
 		String method=request.getParameter("method");
 		String id="";
-		String usernam="";String password="";String realname="";String sex="";String age="";String address="";String tel=""; 
+		String usernam="";String password="";String realname="";String sex="";String age="";String address="";String tel="";
 		if(method.equals("updateAdmin")){
 			id=request.getParameter("id");
 			List alist=cb.get1Com("select * from admin where id='"+id+"'",10);
-			usernam=alist.get(1).toString();
-			password=alist.get(2).toString();
-			realname=alist.get(3).toString();
-			sex=alist.get(4).toString();
-			age=alist.get(5).toString();
-			address=alist.get(6).toString();
-			tel=alist.get(7).toString(); 
+			usernam = alist.get(1).toString();
+			password = alist.get(2).toString();
+			realname = alist.get(3).toString();
+			sex = alist.get(4).toString();
+			age = alist.get(5).toString();
+			address = alist.get(6).toString();
+			tel = alist.get(7).toString();
 		}
 %>
 <body >

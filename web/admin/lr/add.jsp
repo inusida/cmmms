@@ -78,22 +78,21 @@ String message = (String)request.getAttribute("message");
 	else{
 		String method=request.getParameter("method");
 		String id="";
-		String name="";String sex="";String age="";String conditions="";String register="";String idcard="";String linkman="";
-		String tel="";String address="";String bednum="";String nursingworker="";String startTime="";String endTime="";
+		String name="";String age="";String health_status="";String household_register="";String id_card="";String contact_person="";
+		String tel="";String address="";String bed_no="";String caregiver_id="";String startTime="";String endTime="";
 		if(method.equals("updateOldman")){
 			id=request.getParameter("id");
-			List alist=cb.get1Com("select * from oldman_info where id='"+id+"'",14);
+			List alist=cb.get1Com("select * from elderly_info where id='"+id+"'",14);
 			name=alist.get(1).toString();
-			sex=alist.get(2).toString();
 			age=alist.get(3).toString();
-			conditions=alist.get(4).toString();
-			register=alist.get(5).toString();
-			idcard=alist.get(6).toString();
-			linkman=alist.get(7).toString();
+			health_status=alist.get(4).toString();
+			household_register=alist.get(5).toString();
+			id_card=alist.get(6).toString();
+			contact_person=alist.get(7).toString();
 			tel=alist.get(8).toString();
 			address=alist.get(9).toString();
-			bednum=alist.get(10).toString();
-			nursingworker=alist.get(11).toString();
+			bed_no=alist.get(10).toString();
+			caregiver_id=alist.get(11).toString();
 			startTime=alist.get(12).toString();
 			endTime=alist.get(13).toString();
 		}
@@ -122,19 +121,19 @@ String message = (String)request.getAttribute("message");
      </tr>
      <tr>
      <td width="40%" align="left" nowrap="nowrap" >身体状况：</td>
-     <td><input type="text" name="conditions" class="input_style" value="<%=conditions %>" required /></td>
+     <td><input type="text" name="health_status" class="input_style" value="<%=health_status %>" required /></td>
      </tr>
      <tr>
      <td width="40%" align="left" nowrap="nowrap" >户籍：</td>
-     <td><input type="text" name="register" class="input_style" value="<%=register %>" required/></td>
+     <td><input type="text" name="household_register" class="input_style" value="<%=household_register %>" required/></td>
      </tr> 
      <tr>
      <td width="40%" align="left" nowrap="nowrap" >身份证：</td>
-     <td><input type="text" name="idcard" class="input_style" value="<%=idcard %>" pattern="[0-9]{18}" title="18位身份证号码" required/></td>
+     <td><input type="text" name="id_card" class="input_style" value="<%=id_card %>" pattern="[0-9]{18}" title="18位身份证号码" required/></td>
      </tr> 
      <tr>
      <td width="40%" align="left" nowrap="nowrap" >联系人：</td>
-     <td><input type="text" name="linkman" class="input_style" value="<%=linkman %>" required/></td>
+     <td><input type="text" name="contact_person" class="input_style" value="<%=contact_person %>" required/></td>
      </tr> 
      <tr>
      <td width="40%" align="left" nowrap="nowrap" >联系电话：</td>
@@ -146,13 +145,13 @@ String message = (String)request.getAttribute("message");
      </tr>
      <tr>
      <td width="40%" align="left" nowrap="nowrap" >床位号：</td>
-     <td><input type="text" name="bednum" class="input_style" value="<%=bednum %>" required/></td>
+     <td><input type="text" name="bed_no" class="input_style" value="<%=bed_no %>" required/></td>
      </tr> 
      <tr>
      <td width="40%" align="left" nowrap="nowrap" >护工编号：</td>
-     <td><select name="nursingworker" class="select_style">
-    <%if(method.equals("updateOldman")){ %><option value="<%=nursingworker%>"><%=nursingworker%></option> <%} %>
-    <%List flist=cb.getCom("select * from admin where type='普通管理员' order by id desc",2);if(!flist.isEmpty()){for(int i=0;i<flist.size();i++){List list2=(List)flist.get(i);%>
+     <td><select name="caregiver_id" class="select_style">
+    <%if(method.equals("updateOldman")){ %><option value="<%=caregiver_id%>"><%=caregiver_id%></option> <%} %>
+    <%List flist=cb.getCom("select * from admin where admin_type='普通管理员' order by id desc",2);if(!flist.isEmpty()){for(int i=0;i<flist.size();i++){List list2=(List)flist.get(i);%>
     <option value=<%=list2.get(1).toString() %>><%=list2.get(1).toString() %></option>
     <%}} %>
     </select></td> 
