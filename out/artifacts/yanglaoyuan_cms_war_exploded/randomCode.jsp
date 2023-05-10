@@ -21,7 +21,7 @@
     public String getStr(){
         StringBuffer sb = new StringBuffer();
         Random random = new Random();
-        for(int i=0;i<6;i++){
+        for(int i=0;i<4;i++){
             sb.append(randomStr.charAt(random.nextInt(randomStr.length())));//每次提取一个随机字符
         }
         return sb.toString();
@@ -64,7 +64,7 @@
 
     //将验证码放入Session中
     session.setAttribute("RANDOMCODE",randomCode);
-
+    System.out.println(randomCode);
     //通过流将验证码图片输出
     ImageIO.write(image,"jpeg",response.getOutputStream());
     out.clear();
