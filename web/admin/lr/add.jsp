@@ -152,7 +152,7 @@ String message = (String)request.getAttribute("message");
      <td><select name="caregiver_id" class="select_style">
     <%if(method.equals("updateOldman")){ %><option value="<%=caregiver_id%>"><%=caregiver_id%></option> <%} %>
     <%List flist=cb.getCom("select * from admin where admin_type='普通管理员' order by id desc",2);if(!flist.isEmpty()){for(int i=0;i<flist.size();i++){List list2=(List)flist.get(i);%>
-    <option value=<%=list2.get(1).toString() %>><%=list2.get(1).toString() %></option>
+    <option value=<%=list2.get(0).toString() %>><%=list2.get(0).toString() %></option>
     <%}} %>
     </select></td> 
      </tr> 
